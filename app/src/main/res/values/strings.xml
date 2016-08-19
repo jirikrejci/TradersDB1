@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TradersDB1</string>
+    <string name="btn_hello_get">hello GET</string>
+    <string name="btn_hello_post">hello POST</string>
+</resources>
