@@ -1,4 +1,4 @@
-package com.example.jirka.tradersdb1;
+package com.example.jirka.TdbClient;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

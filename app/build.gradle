@@ -28,19 +28,25 @@ android {
         }
     }
 
+    sourceSets {
+      // main.java.srcDirs += 'src/main/../../../../../JavaProjects/Networking Examples/src/com/JKSoft/SharedPackage'
+
+    }
+
 }
 
 
 
 
 dependencies {
-
-   // compile fileTree(include: ['*.jar'], dir: 'libs')
-   // compile files('libs/NetworkingExamples.jar')
+    // compile fileTree(include: ['*.jar'], dir: 'libs')
+    // compile files('libs/NetworkingExamples.jar')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
-    //compile project(':NetworkingExamples')
+    // bez následujícího nastavení kompatibilit padal Gradle build
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
 }
