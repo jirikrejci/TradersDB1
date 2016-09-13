@@ -47,6 +47,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
     // bez následujícího nastavení kompatibilit padal Gradle build
+    compile project(':jklibrary')
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
+    compile files('libs/NetworkingExamples_jar/Networking Examples.jar')
 }

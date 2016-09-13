@@ -1,7 +1,0 @@
-apply plugin: 'application'
-mainClassName = "org.gradle.sample.Main"
-
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}

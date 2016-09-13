@@ -1,1 +1,1 @@
-include ':app', ':backendServlets'
+include ':app', ':backendServlets', ':jklibrary'
