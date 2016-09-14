@@ -1,1 +1,1 @@
-include ':app', ':backendServlets', ':jklibrary'
+include ':app', ':backendServlets', ':jklibrary', ':PokusSModuly2'
