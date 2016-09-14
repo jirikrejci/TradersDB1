@@ -1,0 +1,14 @@
+Shared Package - úspìšný pokus
+
+mklink /J "C:\Users\Jirka\AndroidStudioProjects\TradersDB1\app\src\main\java\com\JKSoft\SharedPackage" "C:\Users\Jirka\JavaProjects\Networking Examples\src\com\JKSoft\SharedPackage"
+
+NetworkFms pro Android Studio
+mklink /J "c:\Users\Jirka\AndroidStudioProjects\TradersDB1\app\src\main\java\com\JKSoft\Networking\NetworkFms" "c:\Users\Jirka\JavaProjects\Networking Examples\src\com\JKSoft\Networking\NetworkFms" 
+NetworkFms pro TraderDbDesktop
+mklink /J "C:\Users\Jirka\JavaProjects\TraderDbDesktop\src\com\JKSoft\Networking\NetworkFms" "c:\Users\Jirka\JavaProjects\Networking Examples\src\com\JKSoft\Networking\NetworkFms" 
+
+
+
+mklink /J   "C:\Users\Jirka\AndroidStudioProjects\TradersDB1\jklibrary\libs\JKNetworkingLibrary_jar" "c:\Users\Jirka\JavaProjects\Networking Examples\out\artifacts\JKNetworkingLibrary_jar"
+
+mklink /J   "c:\Users\Jirka\AndroidStudioProjects\TradersDB1\app\libs\NetworkingExamples_jar"  "c:\Users\Jirka\JavaProjects\Networking Examples\out\artifacts\NetworkingExamples_jar"
