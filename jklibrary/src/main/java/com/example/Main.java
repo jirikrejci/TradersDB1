@@ -9,8 +9,8 @@ import com.JKSoft.NetworkLibrary.NetWorkLibrarySharedClass;
 public class Main {
     public static void main (String [] args) {
         System.out.println("Toto je main v pokusne Android JKLibrary");
-        MyFirstLibraryClass.show();
-        MyFirstLibraryClass.sayHello("Jirko jak se máš?");
+        MyFirstAsLibraryClass.show();
+        MyFirstAsLibraryClass.sayHello("Jirko jak se máš?");
         NetWorkLibrarySharedClass.show();
     }
 

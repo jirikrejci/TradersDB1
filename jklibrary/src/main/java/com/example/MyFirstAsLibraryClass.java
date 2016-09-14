@@ -4,11 +4,11 @@ package com.example;
 /**
  * Prvni pokusna trida vytvorena v android studiu, o jejiz import se pokousim do InteliJ -
  * knihovna: jklibrary
- * package com.example.MyFirstLibraryClass
+ * package com.example.MyFirstAsLibraryClass
  *
  */
 
-public class MyFirstLibraryClass {
+public class MyFirstAsLibraryClass {
     /**
      * Metoda vypise text "Ahoj z AndroidStudia projektu TradersDB1,  ahoj, kurva, to je ale drina"
      */
@@ -21,7 +21,7 @@ public class MyFirstLibraryClass {
      * @param name jmeno osloveneho
      */
     public static void sayHello (String name) {
-        System.out.println("Hello " +  name + "!");
+        System.out.println("MyFirstAsLibraryClass.sayhello()> Hello " +  name + "!");
     }
 
 }
