@@ -3,11 +3,14 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.14.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/InteliPokus4" />
+            <option value="$PROJECT_DIR$/Pokus4FromInteliJ" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
             <option value="$PROJECT_DIR$/jklibrary" />
@@ -16,6 +19,8 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/InteliPokus4" />
+            <option value="$PROJECT_DIR$/Pokus4FromInteliJ" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
             <option value="$PROJECT_DIR$/jklibrary" />

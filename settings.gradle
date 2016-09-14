@@ -1,1 +1,1 @@
-include ':app', ':backendServlets', ':jklibrary'
+include ':app', ':backendServlets', ':jklibrary', 'Pokus4FromInteliJ', 'InteliPokus4'
