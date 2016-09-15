@@ -6,7 +6,10 @@
       <module fileurl="file://$PROJECT_DIR$/TradersDB1.iml" filepath="$PROJECT_DIR$/TradersDB1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backendServlets/backendServlets.iml" filepath="$PROJECT_DIR$/backendServlets/backendServlets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.JKSoft.Networking/com.JKSoft.Networking.iml" filepath="$PROJECT_DIR$/com.JKSoft.Networking/com.JKSoft.Networking.iml" />
       <module fileurl="file://$PROJECT_DIR$/jklibrary/jklibrary.iml" filepath="$PROJECT_DIR$/jklibrary/jklibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tdbdesktop/tdbdesktop.iml" filepath="$PROJECT_DIR$/tdbdesktop/tdbdesktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tdbshared/tdbshared.iml" filepath="$PROJECT_DIR$/tdbshared/tdbshared.iml" />
     </modules>
   </component>
 </project>

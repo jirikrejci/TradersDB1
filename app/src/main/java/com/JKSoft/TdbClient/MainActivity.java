@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.JKSoft.Networking.NetworkFms.NasFtp;
+import com.JKSoft.Networking.NetworkFms.Ftp;
 import com.JKSoft.TdbClient.Convertors.Convertors;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
 import com.example.MyFirstAsLibraryClass;
@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 
         tvDisplay = (TextView) findViewById(R.id.tvDisplay);
 
+        //TODO smazat nsáledující testy
         MyFirstAsLibraryClass.show();
         MyFirstAsLibraryClass.sayHello("Jirko");
 
@@ -100,7 +101,7 @@ public class MainActivity extends Activity {
         AsyncTask <String, Void, String> task  =  new AsyncTask<String, Void , String>() {
             @Override
             protected String doInBackground(String... strings) {
-                return NasFtp.readFileFromFtpFile("/FilesDB/RelevantTrades.json");  // OK
+                return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json");  // OK
             }
 
             @Override

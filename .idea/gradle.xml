@@ -12,7 +12,10 @@
             <option value="$PROJECT_DIR$/PokusSModuly2" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
+            <option value="$PROJECT_DIR$/com.JKSoft.Networking" />
             <option value="$PROJECT_DIR$/jklibrary" />
+            <option value="$PROJECT_DIR$/tdbdesktop" />
+            <option value="$PROJECT_DIR$/tdbshared" />
           </set>
         </option>
         <option name="myModules">
@@ -21,7 +24,10 @@
             <option value="$PROJECT_DIR$/PokusSModuly2" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
+            <option value="$PROJECT_DIR$/com.JKSoft.Networking" />
             <option value="$PROJECT_DIR$/jklibrary" />
+            <option value="$PROJECT_DIR$/tdbdesktop" />
+            <option value="$PROJECT_DIR$/tdbshared" />
           </set>
         </option>
       </GradleProjectSettings>
