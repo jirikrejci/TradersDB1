@@ -3,4 +3,5 @@ apply plugin: 'java'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':com.JKSoft.Networking')
+    compile project(':tdbshared')
 }

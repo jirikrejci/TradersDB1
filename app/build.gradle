@@ -49,6 +49,6 @@ dependencies {
     // bez následujícího nastavení kompatibilit padal Gradle build
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
-    compile project(':jklibrary')
-    compile files('libs/com.JKSoft.Networking/com.JKSoft.Networking/com.JKSoft.Networking.jar')
+    compile project(':com.JKSoft.Networking')
+    compile project(':tdbshared')
 }

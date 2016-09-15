@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.JKSoft.Networking.NetworkFms.Ftp;
 import com.JKSoft.TdbClient.Convertors.Convertors;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
-import com.example.MyFirstAsLibraryClass;
 import com.example.jirka.TdbClient.R;
 
 import retrofit.Callback;
@@ -35,13 +34,6 @@ public class MainActivity extends Activity {
         mTdbRestAdapter = new TradersDbRestAdapter();
 
         tvDisplay = (TextView) findViewById(R.id.tvDisplay);
-
-        //TODO smazat nsáledující testy
-        MyFirstAsLibraryClass.show();
-        MyFirstAsLibraryClass.sayHello("Jirko");
-
-     //   NetWorkLibrarySharedClass.show();
-
 
     }
 
