@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.JKSoft.DataStructures.RelevantTradesExch;
+import com.JKSoft.Networking.Gson.JsonConversions;
 import com.JKSoft.Networking.NetworkFms.Ftp;
 import com.JKSoft.TdbClient.Convertors.Convertors;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
 import com.example.jirka.TdbClient.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -26,6 +30,7 @@ public class MainActivity extends Activity {
     protected final String TAG = "JK:" + getClass().getSimpleName();
     private TradersDbRestAdapter mTdbRestAdapter;
     private TextView tvDisplay;
+    private RelevantTradesExch relevantTradesExch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +102,11 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            protected void onPostExecute(String text) {
-                super.onPostExecute(text);
-                tvDisplay.setText(text);
+            protected void onPostExecute(String jsonStr) {
+                super.onPostExecute(jsonStr);
+                tvDisplay.setText(jsonStr);
+                Gson gson = new GsonBuilder().create();
+                relevantTradesExch = gson.fromJson(jsonStr, RelevantTradesExch.class);
 
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
@@ -112,6 +119,14 @@ public class MainActivity extends Activity {
         };
         task.execute("Ahoj");
 
+    }
+
+    public void btnShowJsonPretty(View view) {
+        if (relevantTradesExch != null) {
+            tvDisplay.setText(JsonConversions.getJSonPretty(relevantTradesExch));
+        } else {
+            Toast.makeText(this, "no TradeDB data",Toast.LENGTH_SHORT).show();
+        }
     }
 }
 ;

@@ -1,4 +1,4 @@
-package com.example;
+package com.JKSoft;
 
 public class Whatewer {
 }
