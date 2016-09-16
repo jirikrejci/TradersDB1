@@ -35,6 +35,38 @@ public class TradeRecord {
     @SerializedName("Req Result")
     String requestResult;
 
+    public String getEstimatedTradeStatus() {
+        return estimatedTradeStatus;
+    }
+
+    public void setEstimatedTradeStatus(String estimatedTradeStatus) {
+        this.estimatedTradeStatus = estimatedTradeStatus;
+    }
+
+    public String getRequestResult() {
+        return requestResult;
+    }
+
+    public void setRequestResult(String requestResult) {
+        this.requestResult = requestResult;
+    }
+
+    public Long getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(Long orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     @SerializedName("Estimated Trade Status")
     String estimatedTradeStatus;
 

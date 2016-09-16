@@ -12,3 +12,4 @@ mklink /J "C:\Users\Jirka\JavaProjects\TraderDbDesktop\src\com\JKSoft\Networking
 mklink /J   "C:\Users\Jirka\AndroidStudioProjects\TradersDB1\jklibrary\libs\JKNetworkingLibrary_jar" "c:\Users\Jirka\JavaProjects\Networking Examples\out\artifacts\JKNetworkingLibrary_jar"
 
 mklink /J   "c:\Users\Jirka\AndroidStudioProjects\TradersDB1\app\libs\NetworkingExamples_jar"  "c:\Users\Jirka\JavaProjects\Networking Examples\out\artifacts\NetworkingExamples_jar"
+mklink /J   "c:\Users\Jirka\AndroidStudioProjects\TradersDB1\app\libs\com.JKSoft.Networking" "c:\Users\Jirka\JavaProjects\NetworkingJk\out\artifacts"

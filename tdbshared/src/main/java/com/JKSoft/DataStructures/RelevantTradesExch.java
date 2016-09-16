@@ -16,6 +16,11 @@ public class RelevantTradesExch {
 
     TradeRecord [] trades;
 
+
+    public TradeRecord [] getTrades () {
+        return trades;
+    }
+
     @Override
     public String toString() {
         return "RelevantTradesExch:{" +

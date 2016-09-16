@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:id="@+id/viewItemRoot">
+
+    <TextView
+        android:id="@+id/tvSymbol"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:text="USDJPY"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tvLevelPrice"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:text="123.50"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDirection"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:text="Sell"
+        android:paddingLeft="2dp"
+        />
+
+    <TextView
+        android:id="@+id/tvOrderStatus"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:text="Pending"
+        android:paddingLeft="2dp"
+        />
+
+    <TextView
+        android:id="@+id/tvEstimatedTradeStatus"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:text="TS_Pending"
+        android:paddingLeft="2dp"
+        />
+
+
+
+
+
+
+</LinearLayout>

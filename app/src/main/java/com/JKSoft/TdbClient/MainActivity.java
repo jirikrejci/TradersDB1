@@ -1,6 +1,7 @@
 package com.JKSoft.TdbClient;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity {
     private TradersDbRestAdapter mTdbRestAdapter;
     private TextView tvDisplay;
     private RelevantTradesExch relevantTradesExch;
+    private String jsonStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,52 +69,47 @@ public class MainActivity extends Activity {
         @Override
         public void failure(RetrofitError error) {
             tvDisplay.setText("failure: " + error.toString());
-            Log.d (TAG, "failure: " + error);
+            Log.d(TAG, "failure: " + error);
         }
     };
 
 
-
-
-
-
-
-
-
     public void btnHelloGet_onClick(View view) {
         tvDisplay.setText("");
-        Toast.makeText(this, "btnHello GET OnClick",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "btnHello GET OnClick", Toast.LENGTH_SHORT).show();
         mTdbRestAdapter.getHello(mHelloGetCallback);
 
     }
 
     public void btnHelloPost_onClick(View view) {
         tvDisplay.setText("");
-        Toast.makeText(this, "btnHello PUT OnClick",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "btnHello PUT OnClick", Toast.LENGTH_SHORT).show();
         mTdbRestAdapter.postHello("Jirko", mHelloPostCallback);
 
     }
 
     public void btnReadFtpFromNas_onClick(View view) {
         tvDisplay.setText("");
-        AsyncTask <String, Void, String> task  =  new AsyncTask<String, Void , String>() {
+        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
                 return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json");  // OK
             }
 
             @Override
-            protected void onPostExecute(String jsonStr) {
-                super.onPostExecute(jsonStr);
-                tvDisplay.setText(jsonStr);
+            protected void onPostExecute(String jsonString) {
+                super.onPostExecute(jsonString);
+                tvDisplay.setText(jsonString);
                 Gson gson = new GsonBuilder().create();
-                relevantTradesExch = gson.fromJson(jsonStr, RelevantTradesExch.class);
+                relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
+
+                jsonStr = jsonString;
+
 
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
                 tradesExch = gson.fromJson(text,RelevantTradesExch.class);
 */
-
 
 
             }
@@ -125,8 +122,19 @@ public class MainActivity extends Activity {
         if (relevantTradesExch != null) {
             tvDisplay.setText(JsonConversions.getJSonPretty(relevantTradesExch));
         } else {
-            Toast.makeText(this, "no TradeDB data",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "no TradeDB data", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void btnShowTradesView(View view) {
+
+        Intent intent = new Intent(this, actTradesOverview.class);
+
+        Bundle bundle = new Bundle();
+        // TODO - vymyslet, jak předat data jako parcelable
+        //bundle.putString( "DATA", jsonStr);  // TODO vymysklet, jakp ředat KEY, aby se editoval jen na jednom místě
+        intent.putExtra("DATA", jsonStr);    // TODO lze i putextra přímo
+        startActivity(intent);
+
+    }
 }
-;
