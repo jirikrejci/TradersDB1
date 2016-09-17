@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
-import com.JKSoft.Networking.NetworkFms.Ftp;
+import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;

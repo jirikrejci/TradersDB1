@@ -1,8 +1,9 @@
 package com.JKSoft.DataExchange;
 
+
 import com.JKSoft.DataStructures.RelevantTradesExch;
-import com.JKSoft.Methods.JsonConversions;
-import com.JKSoft.Networking.NetworkFms.Ftp;
+import com.JKSoft.Networking.fms.Ftp;
+import com.JKSoft.Networking.gson.JsonConversions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.JKSoft.DataStructures.RelevantTradesExch;
-import com.JKSoft.Networking.Gson.JsonConversions;
-import com.JKSoft.Networking.NetworkFms.Ftp;
+import com.JKSoft.Networking.gson.JsonConversions;
+import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.TdbClient.Convertors.Convertors;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
 import com.example.jirka.TdbClient.R;
@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
 
     public void btnShowJsonPretty(View view) {
         if (relevantTradesExch != null) {
-            tvDisplay.setText(JsonConversions.getJSonPretty(relevantTradesExch));
+            tvDisplay.setText(JsonConversions.getJsonPretty(relevantTradesExch));
         } else {
             Toast.makeText(this, "no TradeDB data", Toast.LENGTH_SHORT).show();
         }

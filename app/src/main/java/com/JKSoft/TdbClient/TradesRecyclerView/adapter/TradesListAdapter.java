@@ -1,6 +1,7 @@
 package com.JKSoft.TdbClient.TradesRecyclerView.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.icu.text.AlphabeticIndex;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -87,8 +88,18 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.Tr
         holder.tvSymbol.setText(tradeRecord.getSymbol());
         holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO předělat na String.format
         holder.tvDirection.setText(tradeRecord.getDirection());
+        if (tradeRecord.getDirection().equals("buy")) {
+            holder.tvDirection.setTextColor(Color.BLUE);     //TODO vyzkouset ColorStateList  http://stackoverflow.com/questions/6678694/how-to-set-textcolor-using-settextcolorcolorsstatelist-colors
+        } else {
+            holder.tvDirection.setTextColor(Color.RED);
+        }
+
+
+
         holder.tvOrderStatus.setText(tradeRecord.getOrderStatus());    //TODO doimplementovat OrderStatus
         holder.tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus()); //TODO doimplementovat EstimatedTradeStatus
+
+
 
     }
 

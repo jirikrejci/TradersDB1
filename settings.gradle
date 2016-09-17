@@ -1,1 +1,1 @@
-include ':app', ':backendServlets', ':com.JKSoft.Networking', ':tdbdesktop', ':tdbshared'
+include ':app', ':backendServlets', ':tdbdesktop', ':tdbshared', ':networkingJK'

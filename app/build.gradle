@@ -10,12 +10,10 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
 */
-
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
-
     defaultConfig {
-        applicationId "com.example.jirka.tradersdb1"
+        applicationId 'comJKSoft.tradersdb1'
         minSdkVersion 18
         targetSdkVersion 24
         versionCode 1
@@ -27,12 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
-      // main.java.srcDirs += 'src/main/../../../../../JavaProjects/Networking Examples/src/com/JKSoft/SharedPackage'
+        // main.java.srcDirs += 'src/main/../../../../../JavaProjects/Networking Examples/src/com/JKSoft/SharedPackage'
 
     }
-
+    productFlavors {
+    }
 }
 
 
@@ -50,6 +48,5 @@ dependencies {
     // bez následujícího nastavení kompatibilit padal Gradle build
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
-    compile project(':com.JKSoft.Networking')
     compile project(':tdbshared')
 }

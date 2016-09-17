@@ -11,7 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
-            <option value="$PROJECT_DIR$/com.JKSoft.Networking" />
+            <option value="$PROJECT_DIR$/networkingJK" />
             <option value="$PROJECT_DIR$/tdbdesktop" />
             <option value="$PROJECT_DIR$/tdbshared" />
           </set>
@@ -21,7 +21,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backendServlets" />
-            <option value="$PROJECT_DIR$/com.JKSoft.Networking" />
+            <option value="$PROJECT_DIR$/networkingJK" />
             <option value="$PROJECT_DIR$/tdbdesktop" />
             <option value="$PROJECT_DIR$/tdbshared" />
           </set>
