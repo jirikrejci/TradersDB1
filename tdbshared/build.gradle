@@ -8,3 +8,6 @@ dependencies {
     compile project(':com.JKSoft.Networking')
     compile 'commons-net:commons-net:3.3'
 }
+
+//TODO http://stackoverflow.com/questions/24658422/android-studio-0-8-1-creating-modules-without-copying-files
+// vyzkoušet též absolutní cestu

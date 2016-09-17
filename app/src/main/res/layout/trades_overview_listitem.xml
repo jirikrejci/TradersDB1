@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:text="USDJPY"
         android:paddingLeft="5dp"
+        android:textSize="@dimen/trades_overview_font_size"
         />
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_height="match_parent"
         android:text="123.50"
         android:paddingLeft="5dp"
+        android:textSize="@dimen/trades_overview_font_size"
         />
 
     <TextView
@@ -27,6 +29,7 @@
         android:layout_height="match_parent"
         android:text="Sell"
         android:paddingLeft="2dp"
+        android:textSize="@dimen/trades_overview_font_size"
         />
 
     <TextView
@@ -35,6 +38,7 @@
         android:layout_height="match_parent"
         android:text="Pending"
         android:paddingLeft="2dp"
+        android:textSize="@dimen/trades_overview_font_size"
         />
 
     <TextView
@@ -43,6 +47,7 @@
         android:layout_height="match_parent"
         android:text="TS_Pending"
         android:paddingLeft="2dp"
+        android:textSize="@dimen/trades_overview_font_size"
         />
 
 
