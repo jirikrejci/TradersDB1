@@ -80,26 +80,14 @@ public class actTradesOverview extends AppCompatActivity implements TradesListAd
                 for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
                     tradeRecordList.add(tradeRecords[i]);
                 }
-
-
-
-
                 tradesListAdapter.notifyDataSetChanged();
-
-
-
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
                 tradesExch = gson.fromJson(text,RelevantTradesExch.class);
 */
-
-
             }
         };
         task.execute("Ahoj");
-
-
-
 
     }
 

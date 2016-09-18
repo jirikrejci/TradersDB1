@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.JKSoft.DataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -29,15 +31,24 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
 
     public interface ItemClickCallback {
-        void onItemClick (int p);  //vystřelí (will fire) vždy když uživatel klikne kamkoliv
+        void onItemClick(int p);  //vystřelí (will fire) vždy když uživatel klikne kamkoliv
+        //void onSecondaryIconCllick (int p);
     }
 
-    public void setItemClickCallback (final ItemClickCallback itemClickCallback) {
+    // setter pro ItemClickCallback
+    public void setItemClickCallback(final ItemClickCallback itemClickCallback) {
         this.itemClickCallback = itemClickCallback;
     }
 
-
-    // doplněný constructor
+    /**
+     * Konsturktor Adaptéru
+     * ukládá si odkaz na list data (zdroj dat) a kontext nadřazeného view, z něhož si vytahuje i inflater
+      * @param listData - odkaz na zdrojová data
+     * @param c context view, které bude Recycler view obsahovat, používá se na
+     *          1) získání odkazu na LayoutInflater
+     *          2)
+     *
+     */
     public TradesListAdapter(List<TradeRecord> listData, Context c) {
         this.listData = listData;
         this.inflater = LayoutInflater.from(c);  // layout inflater v kontexctu volající třídy
@@ -70,7 +81,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // vytvorení view jedné položky z xml
         View view = inflater.inflate(R.layout.trades_overview_listitem, parent, false);
-        //DerpHolder obsahuje ukazatele na views v rámci tednoho ItemView
+        //ItemHolder obsahuje ukazatele na views v rámci tednoho ItemView
         return new ItemHolder(view);
 
     }
@@ -100,6 +111,8 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         TradeRecord tradeRecord = listData.get(position);
         holder.tvSymbol.setText(tradeRecord.getSymbol());
         holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO předělat na String.format
+
+        // Trade Direction
         holder.tvDirection.setText(tradeRecord.getDirection());
         if (tradeRecord.getDirection().equals("buy")) {
             holder.tvDirection.setTextColor(Color.BLUE);     //TODO vyzkouset ColorStateList  http://stackoverflow.com/questions/6678694/how-to-set-textcolor-using-settextcolorcolorsstatelist-colors
@@ -111,13 +124,11 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
             holder.imDirectionIcon.setColorFilter(Color.RED);
         }
 
-
-
         // Order status
         holder.tvOrderStatus.setText(tradeRecord.getOrderStatus());    //TODO doimplementovat OrderStatus
 
         if (tradeRecord.getOrderStatus() != null) {
-            int color = Color.rgb(0,0,0);
+            int color = Color.rgb(0, 0, 0);
             if (tradeRecord.getOrderStatus().equals("pending"))
                 color = ContextCompat.getColor(context, R.color.colorTradePending);
             else if (tradeRecord.getOrderStatus().equals("in"))
@@ -130,18 +141,31 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         // Trade Status
         holder.tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus()); //TODO doimplementovat EstimatedTradeStatus
         if (tradeRecord.getEstimatedTradeStatus() != null) {
-            int color = Color.rgb(0,0,0);
-            if (tradeRecord.getEstimatedTradeStatus().equals("TS_PENDING")) color = ContextCompat.getColor(context,R.color.colorTradePending);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_EARLY_TURN")) color = ContextCompat.getColor(context,R.color.colorTradeEarlyTurn);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_IN")) color = ContextCompat.getColor(context,R.color.colorTradeIn);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_WAITING_FOR_SCRATCH")) color = ContextCompat.getColor(context,R.color.colorTradeWaitingForScratch);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_SL_REACHED")) color = ContextCompat.getColor(context,R.color.colorTradeSlReached);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_TP_REACHED")) color = ContextCompat.getColor(context,R.color.colorTradeTpReached);
+            int color = Color.rgb(0, 0, 0);
+            if (tradeRecord.getEstimatedTradeStatus().equals("TS_PENDING"))
+                color = ContextCompat.getColor(context, R.color.colorTradePending);
+            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_EARLY_TURN"))
+                color = ContextCompat.getColor(context, R.color.colorTradeEarlyTurn);
+            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_IN"))
+                color = ContextCompat.getColor(context, R.color.colorTradeIn);
+            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_WAITING_FOR_SCRATCH"))
+                color = ContextCompat.getColor(context, R.color.colorTradeWaitingForScratch);
+            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_SL_REACHED"))
+                color = ContextCompat.getColor(context, R.color.colorTradeSlReached);
+            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_TP_REACHED"))
+                color = ContextCompat.getColor(context, R.color.colorTradeTpReached);
 
             holder.tvEstimatedTradeStatus.setTextColor(color);
 
         }
+        // Level Distance
+        if (tradeRecord.getLevelDistance() != null) {
+            holder.tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
+            if (Math.abs(tradeRecord.getLevelDistance())<= 10) holder.tvLevelDistance.setTextColor(Color.RED);
+            else if (Math.abs(tradeRecord.getLevelDistance())<= 140) holder.tvLevelDistance.setTextColor(ContextCompat.getColor(context, R.color.colorTradePending));
+            else holder.tvLevelDistance.setTextColor(Color.rgb(120,120,120));  // TODO ustandrardizovat styly
 
+        }
 
 
     }
@@ -156,6 +180,13 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         return listData.size();
     }
 
+    /**
+     * Vlastní Item holder - objekt, který drží odkazy na jednotlivá subview v rámci jedné položky
+     * a definuje onClickListener na úrovni Item view. OnClick listener dostává jako parametr konkrétní
+     * subview, na které bylo kliknuto
+     *
+     */
+
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvSymbol;
         private TextView tvLevelPrice;
@@ -163,8 +194,13 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         private TextView tvDirection;
         private TextView tvOrderStatus;
         private TextView tvEstimatedTradeStatus;
+        private TextView tvLevelDistance;
         private View viewItemContainer;
 
+        /**
+         * constructor - naplňuje handlery odkazy a nastavuje listener
+         * @param itemView item group view, které pod sebou drží jednotlivá zobrazovaná view v rámci řádku
+         */
         public ItemHolder(View itemView) {
             super(itemView);
 
@@ -174,13 +210,16 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
             tvDirection = (TextView) itemView.findViewById(R.id.tvDirection);
             tvOrderStatus = (TextView) itemView.findViewById(R.id.tvOrderStatus);
             tvEstimatedTradeStatus = (TextView) itemView.findViewById(R.id.tvEstimatedTradeStatus);
+            tvLevelDistance = (TextView) itemView.findViewById(R.id.tvLevelDistance);
 
+            // uložení odkazu na item group view pro nastavení listeneru
             viewItemContainer = itemView.findViewById(R.id.viewItemRoot);
-
+            // nastavení listeneru na click - odkazuje na unstanci Item Holderu => každý holder má svůj listener, a listener je definován v rámci holderu
             viewItemContainer.setOnClickListener(this);
         }
 
         /**
+         * Vlastní onCllick listener
          * Called when a view has been clicked.
          *
          * @param v The view that was clicked.

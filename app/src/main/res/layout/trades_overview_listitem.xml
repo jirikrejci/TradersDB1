@@ -48,11 +48,25 @@
         />
 
     <TextView
+        android:id="@+id/tvLevelDistance"
+        android:layout_width="35dp"
+        android:layout_height="match_parent"
+        android:text="121.0"
+        android:paddingLeft="2dp"
+        android:textSize="@dimen/trades_overview_font_size"
+        android:gravity="center_vertical|end"
+
+        />
+
+
+
+
+    <TextView
         android:id="@+id/tvOrderStatus"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:text="Pending"
-        android:paddingLeft="2dp"
+        android:paddingLeft="8dp"
         android:textSize="@dimen/trades_overview_font_size"
         android:gravity="center_vertical|start"
 

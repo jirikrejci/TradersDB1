@@ -21,7 +21,8 @@ public class TradeRecord {
     String status;
 
     @SerializedName("Level Price")
-    double levelPrice;
+    Double levelPrice;
+
 
     @SerializedName("Order status")
     String orderStatus;
@@ -35,6 +36,85 @@ public class TradeRecord {
     @SerializedName("Req Result")
     String requestResult;
 
+    @SerializedName("Stop Loss")
+    Double SL;
+
+    @SerializedName("SL Pips")
+    Double slPips;
+
+    @SerializedName("Manual target")
+    Double tpManual;
+
+    @SerializedName("Proposed Target")
+    Double tpProposed;
+
+    @SerializedName("Planned RRR")
+    Double rrrPlanned;
+
+    @SerializedName("SL EUR")
+    Double slInMoney;
+
+    public Double getLevelDistance() {
+        return levelDistance;
+    }
+
+    public void setLevelDistance(Double levelDistance) {
+        this.levelDistance = levelDistance;
+    }
+
+    @SerializedName("Level Distance")
+    Double levelDistance;
+
+
+    // Setters and Getters
+
+    public Double getSL() {
+        return SL;
+    }
+
+    public void setSL(Double SL) {
+        this.SL = SL;
+    }
+
+    public Double getSlPips() {
+        return slPips;
+    }
+
+    public void setSlPips(Double slPips) {
+        this.slPips = slPips;
+    }
+
+    public Double getTpManual() {
+        return tpManual;
+    }
+
+    public void setTpManual(Double tpManual) {
+        this.tpManual = tpManual;
+    }
+
+    public Double getTpProposed() {
+        return tpProposed;
+    }
+
+    public void setTpProposed(Double tpProposed) {
+        this.tpProposed = tpProposed;
+    }
+
+    public Double getRrrPlanned() {
+        return rrrPlanned;
+    }
+
+    public void setRrrPlanned(Double rrrPlanned) {
+        this.rrrPlanned = rrrPlanned;
+    }
+
+    public Double getSlInMoney() {
+        return slInMoney;
+    }
+
+    public void setSlInMoney(Double slInMoney) {
+        this.slInMoney = slInMoney;
+    }
 
     public String getEstimatedTradeStatus() {
         return estimatedTradeStatus;
@@ -72,8 +152,6 @@ public class TradeRecord {
     String estimatedTradeStatus;
 
 
-
-
     //constructor
 
 
@@ -84,44 +162,47 @@ public class TradeRecord {
     }
 
 
-
     // Setters and Getters
 
     public String getSymbol() {
         return symbol;
     }
+
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
+
     public Double getLevelPrice() {
         return levelPrice;
     }
+
     public void setLevelPrice(Double levelPrice) {
         this.levelPrice = levelPrice;
     }
+
     public String getDirection() {
         return direction;
     }
+
     public void setDirection(String direction) {
         this.direction = direction;
     }
 
 
-
     @Override
     public String toString() {
-        String output_str ="";
+        String output_str = "";
         output_str = "\nTrade> " + symbol +
                 "\t " + String.format("%8.4f", levelPrice) +
                 "\t" + direction +
-                "\t" +  requestResult +
+                "\t" + requestResult +
                 "\t" + estimatedTradeStatus;
 
         return output_str;
     }
 
     public String toStringNice() {
-        String output_str ="";
+        String output_str = "";
         output_str = "Trade: \n" +
                 "\tsymbol: " + symbol + "\n" +
                 "\tlevelPrice: " + levelPrice + "\n" +
@@ -129,7 +210,6 @@ public class TradeRecord {
 
         return output_str;
     }
-
 
 
 }

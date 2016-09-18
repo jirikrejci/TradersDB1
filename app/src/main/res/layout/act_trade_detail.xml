@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.JKSoft.TdbClient.actTradeDetail"
     android:columnOrderPreserved="false"
-    android:columnCount="4"
+    android:columnCount="6"
 >
 
     <TextView
@@ -42,6 +42,28 @@
         android:text="buy"/>
 
     <TextView
+        android:layout_column="4"
+        android:id="@+id/tvLevelDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+xxx"
+        android:layout_row="0"
+        android:paddingStart="10dp"
+        />
+
+
+    <TextView
+        android:layout_column="5"
+        android:id="@+id/tvEstimatedTradeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TS_xxxx"
+        android:layout_row="0"
+        android:paddingStart="10dp"
+        />
+
+
+    <TextView
         android:layout_column="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +71,7 @@
 
     <TextView
         android:layout_column="1"
-        android:id="@+id/tvTarget"
+        android:id="@+id/tvTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="x.xxxx"/>
@@ -58,14 +80,84 @@
         android:layout_column="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop Loss:"/>
+        android:text="TP prop."/>
 
     <TextView
         android:layout_column="1"
-        android:id="@+id/tvStopLoss"
+        android:id="@+id/tvTpProposed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TP man."/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvTpManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SL:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvSL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SL pips:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvSlPips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SL money:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvSlMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RRR plan.:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvRrrPlanned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+
 
     <TextView
         android:layout_column="0"
@@ -107,18 +199,8 @@
         android:layout_height="wrap_content"
         android:text="xxxx"/>
 
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ETS:"/>
 
-    <TextView
-        android:layout_column="1"
-        android:id="@+id/tvEstimatedTradeStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TS_xxxx"/>
+
 
 
 
