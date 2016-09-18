@@ -35,6 +35,7 @@ public class TradeRecord {
     @SerializedName("Req Result")
     String requestResult;
 
+
     public String getEstimatedTradeStatus() {
         return estimatedTradeStatus;
     }

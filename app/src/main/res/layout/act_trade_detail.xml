@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.JKSoft.TdbClient.actTradeDetail"
+    android:columnOrderPreserved="false"
+    android:columnCount="4"
+>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxx"/>
+
+    <TextView
+        android:layout_column="2"
+        android:id="@+id/tvLevelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="3"
+        android:id="@+id/tvDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="buy"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Target:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Loss:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvStopLoss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x.xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Status:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvOrderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order #:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvOrderNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxx"/>
+
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Method:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxx"/>
+
+    <TextView
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ETS:"/>
+
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/tvEstimatedTradeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TS_xxxx"/>
+
+
+
+
+</GridLayout>

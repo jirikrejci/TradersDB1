@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorTradePending">#ffbf40</color>
+    <color name="colorTradeSuspended">#1b8c8e</color>
+    <color name="colorTradeIn">#2db92d</color>
+    <color name="colorTradeWaitingForScratch">#b9552d</color>
+    <color name="colorTradeEarlyTurn">#9227bf</color>
+    <color name="colorTradeSlReached">#f7060a</color>
+    <color name="colorTradeTpReached">#6c8f0b</color>
 </resources>

@@ -19,7 +19,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class actTradesOverview extends AppCompatActivity {
+public class actTradesOverview extends AppCompatActivity implements TradesListAdapter.ItemClickCallback{
 
     RecyclerView recView;
     TradesListAdapter tradesListAdapter;
@@ -53,14 +53,13 @@ public class actTradesOverview extends AppCompatActivity {
 
 
         tradesListAdapter = new TradesListAdapter(tradeRecordList, this);
-
-
         recView.setLayoutManager(new LinearLayoutManager(this));
         recView.setAdapter(tradesListAdapter);
-
-
+        tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
     }
+
+
 
     public void btnReloadData_OnClick(View view) {
 
@@ -102,5 +101,15 @@ public class actTradesOverview extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onItemClick(int p) {
+        Intent intent = new Intent(this, actTradeDetail.class);
+        TradeRecord tradeRecord = tradeRecordList.get(p);        //TODO očetřit aby se správně pracovalo jen s jedním zdrojem dat !!! Array nebo List tradeRecords je zde stejně null
+        Gson gson = new GsonBuilder().create();                     // TODO zeptat se kluku, jak co nejefektivněji předávat record do nové aktivity. Možná to ale také vtřeší framy
+        String jsonRecordStr = gson.toJson(tradeRecord);
+        intent.putExtra("TRADE_RECORD", jsonRecordStr);
+        startActivity(intent);
     }
 }

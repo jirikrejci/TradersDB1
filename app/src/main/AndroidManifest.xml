@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.JKSoft.TdbClient.actTradesOverview"></activity>
+        <activity android:name="com.JKSoft.TdbClient.actTradesOverview" />
+        <activity android:name="com.JKSoft.TdbClient.actTradeDetail"></activity>
     </application>
 
 </manifest>
