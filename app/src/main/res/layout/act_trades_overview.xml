@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:text="Reload data"
-        android:onClick="btnReloadData_OnClick"
         />
 
 </LinearLayout>

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     /*
@@ -49,4 +50,8 @@ dependencies {
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
     compile project(':tdbshared')
+
+    // butterknife support
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 }

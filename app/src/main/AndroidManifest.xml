@@ -11,12 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.JKSoft.TdbClient.MainActivity">
+        </activity>
+        <activity android:name="com.JKSoft.TdbClient.actFragmentedMain">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
         <activity android:name="com.JKSoft.TdbClient.actTradesOverview" />
         <activity android:name="com.JKSoft.TdbClient.actTradeDetail"></activity>
     </application>

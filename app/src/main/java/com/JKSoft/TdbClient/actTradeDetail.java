@@ -39,6 +39,9 @@ public class actTradeDetail extends AppCompatActivity {
         Gson gson = new GsonBuilder().create();
         TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
 
+
+
+
         tvSymbol = (TextView) findViewById(R.id.tvSymbol);
         tvLevelPrice  = (TextView) findViewById(R.id.tvLevelPrice);
         tvDirection  = (TextView) findViewById(R.id. tvDirection);

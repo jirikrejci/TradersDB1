@@ -218,6 +218,8 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
             viewItemContainer.setOnClickListener(this);
         }
 
+
+
         /**
          * Vlastní onCllick listener
          * Called when a view has been clicked.
@@ -227,6 +229,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         @Override
         public void onClick(View v) {
             itemClickCallback.onItemClick(getAdapterPosition());
+
 
         }
     }
