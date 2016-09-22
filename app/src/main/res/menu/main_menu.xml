@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item android:id="@+id/mReloadDataFromServer"
+            android:icon="@drawable/ic_action_arrow_bottom"
+            android:orderInCategory="1"
+            app:showAsAction="always"
+            android:title="Reload Data" />
+
+    <item android:id="@+id/mReadDataFromFtp"
+        android:title="Read data from FTP"
+        android:icon="@drawable/ic_action_arrow_bottom"
+        android:orderInCategory="2"
+        app:showAsAction="withText"
+        />
+        <item android:id="@+id/mWipeDataFromMemory"
+            android:title="Wipe data from Memory"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            />
+
+        <item android:id="@+id/mReloadDataFromRealm"
+            android:title="Read data from Realm"
+            android:orderInCategory="4"
+            app:showAsAction="never"
+            />
+
+        <item android:id="@+id/mWriteDataToRealm"
+            android:title="Write data to Realm"
+            android:orderInCategory="5"
+            app:showAsAction="never"
+            />
+
+        <item android:id="@+id/mDeleteDataFromRealm"
+            android:title="Delete data from Realm"
+            android:orderInCategory="6"
+            app:showAsAction="never"
+            />
+
+
+        <item android:id="@+id/mSettings"
+            android:title="Settings"
+            android:orderInCategory="7"
+            app:showAsAction="never"
+            />
+
+        <item android:id="@+id/mAbout"
+            android:title="About"
+            android:orderInCategory="8"
+            app:showAsAction="never"
+            />
+
+   </menu>
+
