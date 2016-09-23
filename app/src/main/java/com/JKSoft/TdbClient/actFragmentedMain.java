@@ -2,7 +2,7 @@ package com.JKSoft.TdbClient;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +21,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     RecyclerView recView;
     TradesListAdapter tradesListAdapter;
     FrgTradesOverview frgTradesOverview;
+    FrgTradeDetail frgTradeDetail;
 
     List<TradeRecord> tradeRecordList;
 
@@ -38,6 +39,8 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
         //frgTradesOverview = (FrgTradesOverview)  findViewById(R.id.frgTradesOverview);
       //  ((FrgTradesOverview) findViewById(R.id.frgTradesOverview)).setSelectedItemListener(this.onSelectedItem());
+
+      //  frgTradeDetail = (FrgTradeDetail) findViewById(R.id.frgTradesDetail2);
 
     }
 
@@ -141,12 +144,19 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     public void onSelectedItem(int p, String jsonItem) {
         //Toast.makeText(this, "Položka " + p + "přijata v hlavní aktivitě", Toast.LENGTH_SHORT).show();
 
-        FrgTradeDetail frgTradeDetail = FrgTradeDetail.newInstance(p, jsonItem);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgTradesDetail2);
 
+        frgTradeDetail.displayTradeRecordJson(jsonItem);
+
+/*
+        // verze s vytvořením nové instance a prohozením
+        FrgTradeDetail frgTradeDetail = FrgTradeDetail.newInstance(p, jsonItem);
         FragmentTransaction frgt = getSupportFragmentManager().beginTransaction();
         frgt.replace(R.id.frgTradesDetail2, frgTradeDetail);
         frgt.addToBackStack(null);
         frgt.commit();
+        */
 
     }
 }

@@ -81,7 +81,9 @@ public class FrgTradeDetail extends Fragment {
             Gson gson = new GsonBuilder().create();
             TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
 
+            displayTradeRecord(tradeRecord);
 
+            /*
             String strNumberFormat = "%1$.4f";
 
             tvSymbol.setText(tradeRecord.getSymbol());
@@ -108,9 +110,49 @@ public class FrgTradeDetail extends Fragment {
                 tvRrrPlanned.setText(String.format("%.2f%%", tradeRecord.getRrrPlanned()));
             if (tradeRecord.getLevelDistance() != null)
                 tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
-
+*/
         }
         return view;
     }
+
+    public void displayTradeRecordJson(String jsonRecordStr) {
+        Gson gson = new GsonBuilder().create();
+        TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
+        displayTradeRecord(tradeRecord);
+
+    }
+
+
+    public void displayTradeRecord (TradeRecord tradeRecord) {    // TODO ?? zeptat se jestli statická třída nemá přístup k dynamickým proměnným třídy - vypadá to tak
+
+        String strNumberFormat = "%1$.4f";
+
+        tvSymbol.setText(tradeRecord.getSymbol());
+        tvLevelPrice.setText(String.format(strNumberFormat, tradeRecord.getLevelPrice())); // TODO použít String format
+        tvDirection.setText(tradeRecord.getDirection());
+        if (tradeRecord.getOrderStatus() != null)
+            tvOrderStatus.setText(tradeRecord.getOrderStatus());
+        if (tradeRecord.getEstimatedTradeStatus() != null)
+            tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus());
+        if (tradeRecord.getOrderNumber() != null)
+            tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
+        if (tradeRecord.getTpProposed() != null)
+            tvTpProposed.setText(String.format(strNumberFormat, tradeRecord.getTpProposed()));
+        if (tradeRecord.getTpManual() != null)
+            tvTpManual.setText(String.format(strNumberFormat, tradeRecord.getTpManual()));
+
+        if (tradeRecord.getSL() != null)
+            tvSL.setText(String.format(strNumberFormat, tradeRecord.getSL()));
+        if (tradeRecord.getSlPips() != null)
+            tvSlPips.setText(String.format("%.1f", tradeRecord.getSlPips()));
+        if (tradeRecord.getSlInMoney() != null)
+            tvSlMoney.setText(String.format("%.2f EUR", tradeRecord.getSlInMoney()));
+        if (tradeRecord.getRrrPlanned() != null)
+            tvRrrPlanned.setText(String.format("%.2f%%", tradeRecord.getRrrPlanned()));
+        if (tradeRecord.getLevelDistance() != null)
+            tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
+
+    }
+
 
 }
