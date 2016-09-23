@@ -20,18 +20,38 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
-        release {
+    buildTypes {   // založit release, debug (zaplé logování, vypnuté analytics), beta (na crashlitics)
+        release {   // release odpovídá složce main . Pokud bych vytvořil složku release, vezme main a pak rozdíly v releas
+            // main je základ všeho
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+        beta.initWith(buildTypes.debug)  // zdědí základ z debugu
+        beta {
+            applicationIdSuffix ".beta"
+        }
+        //ikony přes víkend jsou
+
+
+
+
     }
     sourceSets {
         // main.java.srcDirs += 'src/main/../../../../../JavaProjects/Networking Examples/src/com/JKSoft/SharedPackage'
 
     }
+
     productFlavors {
+        // zde se dělají flavous - např ulr gatewayc, mock, např placená, neplacená verze
+        flavour1 {}
+        flavour2 {}
     }
+
+
 }
 
 

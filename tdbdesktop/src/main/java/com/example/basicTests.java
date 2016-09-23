@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Created by Jirka on 16.9.2016.
  */
-public class basicTests {
+public class    basicTests {
     public static void main (String [] args) {
         String inputStr;
         String jsonPrettyStr;
