@@ -1,7 +1,7 @@
 package com.JKSoft.Networking.tests;//import com.JKSoft.Networking.NetworkFms.*;
 
 
-import com.JKSoft.Networking.fms.Ftp;
+
 
 
 /**
@@ -22,9 +22,9 @@ public class TestsNetworkBasic {
 
 //          inputStr = FileSystem.readTextFileFromWinFs("R:/RelevantTrades.json"); System.out.println(inputStr);// OK
 
-          inputStr = Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json"); System.out.println(inputStr); // OK
+          inputStr = com.JKSoft.Networking.fms.Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json"); System.out.println(inputStr); // OK
  //
-           Ftp.writeStringToFtp("/FilesDB/WrittenTextFile.txt", "Ahoj, tohle je soubor zapsaný přes FTP"); // OK
+           com.JKSoft.Networking.fms.Ftp.writeStringToFtp("/FilesDB/WrittenTextFile.txt", "Ahoj, tohle je soubor zapsaný přes FTP"); // OK
 
 
         //FileSystem.readTextFileFromFileSystem2("NASSERVER1\\volume1\\FilesDB\\RelevantTrades.json");  // not working yet
