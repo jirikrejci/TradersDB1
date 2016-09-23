@@ -34,8 +34,7 @@ android {
         beta {
             applicationIdSuffix ".beta"
         }
-        //ikony přes víkend jsou
-
+        //ikony přes víkend
 
 
 
