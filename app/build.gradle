@@ -46,8 +46,8 @@ android {
 
     productFlavors {
         // zde se dělají flavous - např ulr gatewayc, mock, např placená, neplacená verze
-        flavour1 {}
-        flavour2 {}
+        ftp {}
+        mock {}
     }
 
 

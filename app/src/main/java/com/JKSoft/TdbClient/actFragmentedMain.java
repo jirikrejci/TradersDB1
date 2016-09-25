@@ -1,6 +1,7 @@
 package com.JKSoft.TdbClient;
 
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -128,9 +129,14 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     }
 
     private void aboutMenuItem() {
+        Resources res = getResources();
+        String strVersion = "App name:" +res.getString(R.string.app_name) +
+                "\nBild type: " + res.getString(R.string.build_type) +
+                "\nFlavour version: " + res.getString(R.string.flavour_version);
+
         new AlertDialog.Builder(this)
                 .setTitle("About")
-                .setMessage("Trader DB by Jiri Krejci C")
+                .setMessage("Trader DB by Jiri Krejci C\n" + strVersion )
                 .setIcon(R.mipmap.ic_launcher)
                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                             @Override
