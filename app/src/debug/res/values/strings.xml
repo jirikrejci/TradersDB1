@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TDB Debug</string>
+    <string name="build_type">debug</string>
+
+</resources>

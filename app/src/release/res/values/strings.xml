@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TDB Prod</string>
+    <string name="build_type">release</string>
+</resources>
