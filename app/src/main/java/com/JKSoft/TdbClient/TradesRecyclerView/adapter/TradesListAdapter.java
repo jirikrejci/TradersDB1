@@ -10,12 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.JKSoft.DataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -80,7 +77,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // vytvorení view jedné položky z xml
-        View view = inflater.inflate(R.layout.trades_overview_listitem, parent, false);
+        View view = inflater.inflate(R.layout.lay_trades_overview_listitem, parent, false);
         //ItemHolder obsahuje ukazatele na views v rámci tednoho ItemView
         return new ItemHolder(view);
 

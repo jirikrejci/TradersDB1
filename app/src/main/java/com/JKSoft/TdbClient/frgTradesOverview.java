@@ -73,7 +73,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.act_trades_overview, container);
+        View view = inflater.inflate(R.layout.lay_trades_overview, container, false);  // false je zde strašně, důležité, jinak to padá
         ButterKnife.bind(this, view);
 
 

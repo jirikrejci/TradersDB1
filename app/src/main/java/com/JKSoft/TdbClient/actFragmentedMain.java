@@ -1,10 +1,11 @@
 package com.JKSoft.TdbClient;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -38,46 +39,24 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_trades_overview_fragmented);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FrgTradesOverview frgTradesOverview = new FrgTradesOverview();
+        fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
+        //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
+        fragmentTransaction.commit();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.frgContainerTradesDetail, new FrgTradeDetail())
+                .commit();
 
         //frgTradesOverview = (FrgTradesOverview)  findViewById(R.id.frgTradesOverview);
       //  ((FrgTradesOverview) findViewById(R.id.frgTradesOverview)).setSelectedItemListener(this.onSelectedItem());
-
       //  frgTradeDetail = (FrgTradeDetail) findViewById(R.id.frgTradesDetail2);
 
     }
 
 
-/*
-    public void btnReloadData_OnClick(View view) {
-
-        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
-            @Override
-            protected String doInBackground(String... strings) {
-                return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json");  // OK
-            }
-
-            @Override
-            protected void onPostExecute(String jsonString) {
-                super.onPostExecute(jsonString);
-                Gson gson = new GsonBuilder().create();
-                RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
-                TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
-
-                tradeRecordList.clear();
-                for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
-                    tradeRecordList.add(tradeRecords[i]);
-                }
-                tradesListAdapter.notifyDataSetChanged();
-         /*       RelevantTradesExch tradesExch;
-                Gson gson = new GsonBuilder().create();
-                tradesExch = gson.fromJson(text,RelevantTradesExch.class);
-
-            }
-        };
-        task.execute("Ahoj");
-
-    }
-*/
 /*
     @Override
 
@@ -156,7 +135,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         //Toast.makeText(this, "Položka " + p + "přijata v hlavní aktivitě", Toast.LENGTH_SHORT).show();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgTradesDetail2);
+        FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgContainerTradesDetail);
 
         frgTradeDetail.displayTradeRecordJson(jsonItem);
 
@@ -172,21 +151,11 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     }
 
 
-    public static class SettingsFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            // Load the preferences from an XML resource
-            addPreferencesFromResource(R.xml.preferences);
-        }
-    }
 
 
     private void showSettingsFragment() {
-        getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new SettingsFragment())
-                .commit();
+        Intent intent = new Intent(this, actPreferences.class );
+        startActivity(intent);
     }
 
 

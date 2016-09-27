@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-
+        <activity android:name="com.JKSoft.TdbClient.actPreferences" />
         <activity android:name="com.JKSoft.TdbClient.actTradesOverview" />
         <activity android:name="com.JKSoft.TdbClient.actTradeDetail"></activity>
     </application>

@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.act_main_old_layout);
         mTdbRestAdapter = new TradersDbRestAdapter();
 
         tvDisplay = (TextView) findViewById(R.id.tvDisplay);

@@ -32,7 +32,7 @@ public class actTradeDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_trade_detail);
+        setContentView(R.layout.lay_trade_detail);
 
         Intent intent = getIntent();
         String jsonRecordStr = intent.getStringExtra("TRADE_RECORD");

@@ -41,7 +41,7 @@ public class actTradesOverview extends AppCompatActivity implements TradesListAd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_trades_overview);
+        setContentView(R.layout.lay_trades_overview);
 
         tradeRecordList = new ArrayList<>();    // TODO předělat podle příkladu
         Intent intent = getIntent();
