@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
-import com.JKSoft.Networking.fms.Ftp;
+import com.JKSoft.TdbClient.Model.TdbDataSource;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
@@ -113,7 +113,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
-                return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json");  // OK
+                return TdbDataSource.getJsonActualTradeRecords();  // OK
             }
 
             @Override
@@ -124,9 +124,45 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
                 TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
 
                 tradeRecordList.clear();
-                for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
+                for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoň předělat na for each - nebo rovnou předělat, ať se něco nauíčm
                     tradeRecordList.add(tradeRecords[i]);
                 }
+
+
+                tradesListAdapter.notifyDataSetChanged();
+         /*       RelevantTradesExch tradesExch;
+                Gson gson = new GsonBuilder().create();
+                tradesExch = gson.fromJson(text,RelevantTradesExch.class);
+*/
+            }
+        };
+        task.execute("Ahoj");
+
+    }
+
+
+    public void reloadData2 () {
+
+
+        AsyncTask<String, Void, List<TradeRecord>> task = new AsyncTask<String, Void, List<TradeRecord>>() {
+            @Override
+            protected ArrayList<TradeRecord> doInBackground(String... strings) {
+                return TdbDataSource.getActualTradeRecords();
+            }
+
+            @Override
+            protected void onPostExecute(List<TradeRecord> newTradeRecordList) {
+                super.onPostExecute(tradeRecordList);
+                Gson gson = new GsonBuilder().create();
+//                RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
+  //              TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
+
+          //      tradeRecordList.clear();
+    //            for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoň předělat na for each - nebo rovnou předělat, ať se něco nauíčm
+      //              tradeRecordList.add(tradeRecords[i]);
+
+
+                tradeRecordList = newTradeRecordList;
                 tradesListAdapter.notifyDataSetChanged();
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
