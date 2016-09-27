@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
-import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
 import com.JKSoft.TdbClient.Model.TdbDataSource;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
@@ -96,7 +95,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
             public void onClick(View v) {
                 clearTradesList();
                 progressBar.setVisibility(View.VISIBLE  );
-                reloadData2();
+                reloadData();
             }
         });
 
@@ -128,47 +127,15 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     }
 
 
+   
+
     public void reloadData () {
-
-        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
-            @Override
-            protected String doInBackground(String... strings) {
-                return TdbDataSource.getJsonActualTradeRecords();  // OK
-            }
-
-            @Override
-            protected void onPostExecute(String jsonString) {
-                super.onPostExecute(jsonString);
-                Gson gson = new GsonBuilder().create();
-                RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
-                TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
-
-                tradeRecordList.clear();
-                for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoň předělat na for each - nebo rovnou předělat, ať se něco nauíčm
-                    tradeRecordList.add(tradeRecords[i]);
-                }
-
-
-                progressBar.setVisibility(View.GONE);
-                tradesListAdapter.notifyDataSetChanged();
-         /*       RelevantTradesExch tradesExch;
-                Gson gson = new GsonBuilder().create();
-                tradesExch = gson.fromJson(text,RelevantTradesExch.class);
-*/
-            }
-        };
-        task.execute("Ahoj");
-
-    }
-
-
-    public void reloadData2 () {
 
 
         AsyncTask<String, Void, List<TradeRecord>> task = new AsyncTask<String, Void, List<TradeRecord>>() {
             @Override
             protected ArrayList<TradeRecord> doInBackground(String... strings) {
-                return TdbDataSource.getActualTradeRecords();
+                return TdbDataSource.getActualTradeRecords(context);
             }
 
             @Override

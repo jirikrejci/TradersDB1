@@ -139,25 +139,30 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         }
 
         // Trade Status
-        holder.tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus()); //TODO doimplementovat EstimatedTradeStatus
+        holder.tvEstimatedTradeStatus.setText(tradeStatus2Text(tradeRecord.getEstimatedTradeStatus())); //TODO doimplementovat EstimatedTradeStatus
+
         if (tradeRecord.getEstimatedTradeStatus() != null) {
             int color = Color.rgb(0, 0, 0);
             switch (tradeRecord.getEstimatedTradeStatus()) {
-
+                case "TS_PENDING":
+                    color = ContextCompat.getColor(context, R.color.colorTradePending);
+                    break;
+                case "TS_EARLY_TURN":
+                    color = ContextCompat.getColor(context, R.color.colorTradeEarlyTurn);
+                    break;
+                case "TS_IN":
+                    color = ContextCompat.getColor(context, R.color.colorTradeIn);
+                    break;
+                case "TS_WAITING_FOR_SCRATCH":
+                    color = ContextCompat.getColor(context, R.color.colorTradeWaitingForScratch);
+                    break;
+                case "TS_TP_REACHED":
+                    color = ContextCompat.getColor(context, R.color.colorTradeTpReached);
+                    break;
+                case "TS_STOP_LOSS_REACHED":
+                    color = ContextCompat.getColor(context, R.color.colorTradeSlReached);
+                    break;
             }
-
-            if (tradeRecord.getEstimatedTradeStatus().equals("TS_PENDING"))
-                color = ContextCompat.getColor(context, R.color.colorTradePending);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_EARLY_TURN"))
-                color = ContextCompat.getColor(context, R.color.colorTradeEarlyTurn);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_IN"))
-                color = ContextCompat.getColor(context, R.color.colorTradeIn);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_WAITING_FOR_SCRATCH"))
-                color = ContextCompat.getColor(context, R.color.colorTradeWaitingForScratch);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_SL_REACHED"))
-                color = ContextCompat.getColor(context, R.color.colorTradeSlReached);
-            else if (tradeRecord.getEstimatedTradeStatus().equals("TS_TP_REACHED"))
-                color = ContextCompat.getColor(context, R.color.colorTradeTpReached);
 
             holder.tvEstimatedTradeStatus.setTextColor(color);
 
@@ -173,6 +178,19 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
 
     }
+
+    private String tradeStatus2Text(String estimatedTradeStatus) {
+        switch (estimatedTradeStatus) {
+            case "TS_PENDING": return "PENDING";
+            case "TS_EARLY_TURN": return "EARLY TURN";
+            case "TS_IN": return "IN";
+            case "TS_WAITING_FOR_SCRATCH": return "SCRATCH MODE";
+            case "TS_TP_REACHED": return ("TARGET");
+            case "TS_STOP_LOSS_REACHED": return ("STOP LOSS");
+            default: return estimatedTradeStatus;
+        }
+    }
+
 
     /**
      * Returns the total number of items in the data set hold by the adapter.

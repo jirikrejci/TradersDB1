@@ -1,4 +1,9 @@
 <resources>
     <string name="btn_hello_get">hello GET</string>
     <string name="btn_hello_post">hello POST</string>
+    <array name="actual_data_sources">
+        <item>FTP</item>
+        <item>Mock data</item>
+        <item>TDB server</item>
+    </array>
 </resources>

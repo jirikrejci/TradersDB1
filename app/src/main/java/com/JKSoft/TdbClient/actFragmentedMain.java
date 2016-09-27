@@ -3,6 +3,7 @@ package com.JKSoft.TdbClient;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -121,12 +122,16 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
             case R.id.mAbout:
                 aboutMenuItem();
                 break;
+            case R.id.mSettings:
+                showSettingsFragment();
+                break;
             default:
                 Toast.makeText(this, "\"" + item.getTitle() + "\" menu item selected", Toast.LENGTH_LONG).show();
                 break;
         }
         return true;
     }
+
 
     private void aboutMenuItem() {
         Resources res = getResources();
@@ -165,6 +170,26 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         */
 
     }
+
+
+    public static class SettingsFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences);
+        }
+    }
+
+
+    private void showSettingsFragment() {
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
+    }
+
+
 }
 
 

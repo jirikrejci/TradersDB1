@@ -31,7 +31,7 @@
         android:id="@+id/imTradeDirectionIcon"
         android:layout_width="20dp"
         android:layout_height="25dp"
-        android:padding="5dp"
+        android:padding="2dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_action_arrow_top"/>
 
@@ -63,7 +63,7 @@
 
     <TextView
         android:id="@+id/tvOrderStatus"
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="match_parent"
         android:text="Pending"
         android:paddingLeft="8dp"
