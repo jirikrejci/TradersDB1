@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
@@ -23,11 +24,18 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class FrgTradesOverview extends Fragment implements TradesListAdapter.ItemClickCallback{
 
     RecyclerView recView;
     TradesListAdapter tradesListAdapter;
     List<TradeRecord> tradeRecordList;
+
+    @BindView(R.id.pbDataLoadProgressBar)  ProgressBar progressBar;
+    @BindView(R.id.btnReloadData) Button btnReloadData;
+
     Context context;
 
     SelectedItemListener selectedItemListener;  // proměnná pro uložení implementovaného listeneru
@@ -67,6 +75,9 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.act_trades_overview, container);
+        ButterKnife.bind(this, view);
+
+
         tradeRecordList = new ArrayList<>();    // TODO předělat podle příkladu
 
         context = getContext();
@@ -79,11 +90,13 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
         //Button
-        Button btnReloadData = (Button) view.findViewById(R.id.btnReloadData);   // TODO zeptat se davida, jek při vybírání ID vidět je na, která jsou v kontextu daného layoutu - dost se mi to plete, co když buodu v e dvou layoutech stejná ID?
-        btnReloadData.setOnClickListener(new View.OnClickListener() {
+        //Button btnReloadData = (Button) view.findViewById(R.id.btnReloadData);
+        btnReloadData.setOnClickListener(new View.OnClickListener() {   // TODO zeptat se davida, jek při vybírání ID vidět je na, která jsou v kontextu daného layoutu - dost se mi to plete, co když buodu v e dvou layoutech stejná ID?
             @Override
             public void onClick(View v) {
-                reloadData();
+                clearTradesList();
+                progressBar.setVisibility(View.VISIBLE  );
+                reloadData2();
             }
         });
 
@@ -93,6 +106,13 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
         return view;
     }
+
+    private void clearTradesList() {
+        tradeRecordList.clear();
+        tradesListAdapter.notifyDataSetChanged();
+
+    }
+
 
     /**
      * Called when a fragment is first attached to its context.
@@ -129,6 +149,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
                 }
 
 
+                progressBar.setVisibility(View.GONE);
                 tradesListAdapter.notifyDataSetChanged();
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
@@ -153,7 +174,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
             @Override
             protected void onPostExecute(List<TradeRecord> newTradeRecordList) {
                 super.onPostExecute(tradeRecordList);
-                Gson gson = new GsonBuilder().create();
+               // Gson gson = new GsonBuilder().create();
 //                RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
   //              TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
 
@@ -162,8 +183,20 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
       //              tradeRecordList.add(tradeRecords[i]);
 
 
-                tradeRecordList = newTradeRecordList;
+
+                progressBar.setVisibility(View.GONE);
+
+
+
+
+                //tradeRecordList = newTradeRecordList;   // toto nefungovalo - adaptér s tím měl problémy
+                for (TradeRecord tradeRecord: newTradeRecordList) {
+                    tradeRecordList.add(tradeRecord);
+                }
+
+
                 tradesListAdapter.notifyDataSetChanged();
+
          /*       RelevantTradesExch tradesExch;
                 Gson gson = new GsonBuilder().create();
                 tradesExch = gson.fromJson(text,RelevantTradesExch.class);

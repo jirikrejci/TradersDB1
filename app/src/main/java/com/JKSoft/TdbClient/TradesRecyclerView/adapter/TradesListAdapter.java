@@ -142,6 +142,10 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         holder.tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus()); //TODO doimplementovat EstimatedTradeStatus
         if (tradeRecord.getEstimatedTradeStatus() != null) {
             int color = Color.rgb(0, 0, 0);
+            switch (tradeRecord.getEstimatedTradeStatus()) {
+
+            }
+
             if (tradeRecord.getEstimatedTradeStatus().equals("TS_PENDING"))
                 color = ContextCompat.getColor(context, R.color.colorTradePending);
             else if (tradeRecord.getEstimatedTradeStatus().equals("TS_EARLY_TURN"))
