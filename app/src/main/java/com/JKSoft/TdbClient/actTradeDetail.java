@@ -70,17 +70,17 @@ public class actTradeDetail extends AppCompatActivity {
         tvSymbol.setText(tradeRecord.getSymbol());
         tvLevelPrice.setText(String.format(strNumberFormat,tradeRecord.getLevelPrice()));
         tvDirection.setText(tradeRecord.getDirection());
-        if (tradeRecord.getOrderStatus() != null) tvOrderStatus.setText(tradeRecord.getOrderStatus());
-        if (tradeRecord.getEstimatedTradeStatus() != null) tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus());
-        if (tradeRecord.getOrderNumber() != null) tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
-        if (tradeRecord.getTpProposed() != null) tvTpProposed.setText(String.format(strNumberFormat,tradeRecord.getTpProposed()));
-        if (tradeRecord.getTpManual() != null) tvTpManual.setText(String.format(strNumberFormat,tradeRecord.getTpManual()));
+        if (tradeRecord.getOrderStatus() != null) tvOrderStatus.setText(tradeRecord.getOrderStatus()); else tvOrderStatus.setText("");
+        if (tradeRecord.getEstimatedTradeStatus() != null) tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus()); else tvEstimatedTradeStatus.setText("");
+        if (tradeRecord.getOrderNumber() != null && tradeRecord.getOrderNumber()==0) tvOrderNum.setText(tradeRecord.getOrderNumber().toString()); else tvOrderNum.setText("");
+        if (tradeRecord.getTpProposed() != null) tvTpProposed.setText(String.format(strNumberFormat,tradeRecord.getTpProposed())); else tvTpProposed.setText("");
+        if (tradeRecord.getTpManual() != null) tvTpManual.setText(String.format(strNumberFormat,tradeRecord.getTpManual()));else tvTpManual.setText("");
 
-        if (tradeRecord.getSL() != null) tvSl.setText(String.format(strNumberFormat, tradeRecord.getSL()));
-        if (tradeRecord.getSlPips() != null) tvSlPips.setText(String.format("%.1f",tradeRecord.getSlPips()));
-        if (tradeRecord.getSlInMoney() != null) tvSlMoney.setText(String.format("%.2f EUR",tradeRecord.getSlInMoney()));
-        if (tradeRecord.getRrrPlanned() != null) tvRrrPlanned.setText(String.format("%.2f%%",tradeRecord.getRrrPlanned()));
-        if (tradeRecord.getLevelDistance() != null) tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
+        if (tradeRecord.getSL() != null) tvSl.setText(String.format(strNumberFormat, tradeRecord.getSL())); else tvSl.setText("");
+        if (tradeRecord.getSlPips() != null) tvSlPips.setText(String.format("%.1f",tradeRecord.getSlPips())); else tvSlPips.setText("");
+        if (tradeRecord.getSlInMoney() != null) tvSlMoney.setText(String.format("%.2f EUR",tradeRecord.getSlInMoney()));else tvSlMoney.setText("");
+        if (tradeRecord.getRrrPlanned() != null) tvRrrPlanned.setText(String.format("%.2f%%",tradeRecord.getRrrPlanned())); else tvRrrPlanned.setText("");
+        if (tradeRecord.getLevelDistance() != null) tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));else tvLevelDistance.setText("");
 
 
     }

@@ -9,7 +9,7 @@ public class TradeRecord {
 
     // private memmbers
     @SerializedName("ID")
-    Long id;
+    Long tradeId;
 
     @SerializedName("Symbol")
     String symbol;
@@ -18,7 +18,7 @@ public class TradeRecord {
     String direction;
 
     @SerializedName("Status")
-    String status;
+    String tradeRecordStatus;
 
     @SerializedName("Level Price")
     Double levelPrice;
@@ -54,19 +54,27 @@ public class TradeRecord {
     @SerializedName("SL EUR")
     Double slInMoney;
 
-    public Double getLevelDistance() {
-        return levelDistance;
-    }
 
-    public void setLevelDistance(Double levelDistance) {
-        this.levelDistance = levelDistance;
-    }
+
+
+
+    @SerializedName("Estimated Trade Status")
+    String estimatedTradeStatus;
 
     @SerializedName("Level Distance")
     Double levelDistance;
 
 
+
+
+
     // Setters and Getters
+
+    public Double getLevelDistance() {return levelDistance; }
+    public void setLevelDistance(Double levelDistance) {
+        this.levelDistance = levelDistance;
+    }
+
 
     public Double getSL() {
         return SL;
@@ -148,8 +156,8 @@ public class TradeRecord {
         this.orderStatus = orderStatus;
     }
 
-    @SerializedName("Estimated Trade Status")
-    String estimatedTradeStatus;
+
+
 
 
     //constructor
@@ -188,6 +196,17 @@ public class TradeRecord {
         this.direction = direction;
     }
 
+    public Long getTradeId() {return tradeId; }
+
+    public void setTradeId(Long tradeId) {this.tradeId = tradeId; }
+
+    public String getTradeRecordStatus() {return tradeRecordStatus;}   //TODO dořešit
+
+    public void setTradeRecordStatus(String tradeRecordStatus) {this.tradeRecordStatus = tradeRecordStatus; } // TODO Dořešit
+
+    public String getMethod() {return method;}
+
+    public void setMethod(String method) {this.method = method;}
 
     @Override
     public String toString() {

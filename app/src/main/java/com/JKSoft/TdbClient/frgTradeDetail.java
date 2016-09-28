@@ -36,6 +36,8 @@ public class FrgTradeDetail extends Fragment {
     @BindView (R.id.tvSlMoney) TextView tvSlMoney;
     @BindView (R.id.tvRrrPlanned) TextView tvRrrPlanned;
     @BindView (R.id.tvLevelDistance) TextView tvLevelDistance;
+    @BindView (R.id.tvTradeId) TextView tvTradeId;
+    @BindView (R.id.tvTradeRecordStatus) TextView tvTradeRecordStatus;
 
 
     public static FrgTradeDetail newInstance (int p, String jsonStr) {
@@ -83,34 +85,6 @@ public class FrgTradeDetail extends Fragment {
 
             displayTradeRecord(tradeRecord);
 
-            /*
-            String strNumberFormat = "%1$.4f";
-
-            tvSymbol.setText(tradeRecord.getSymbol());
-            tvLevelPrice.setText(String.format(strNumberFormat, tradeRecord.getLevelPrice()));
-            tvDirection.setText(tradeRecord.getDirection());
-            if (tradeRecord.getOrderStatus() != null)
-                tvOrderStatus.setText(tradeRecord.getOrderStatus());
-            if (tradeRecord.getEstimatedTradeStatus() != null)
-                tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus());
-            if (tradeRecord.getOrderNumber() != null)
-                tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
-            if (tradeRecord.getTpProposed() != null)
-                tvTpProposed.setText(String.format(strNumberFormat, tradeRecord.getTpProposed()));
-            if (tradeRecord.getTpManual() != null)
-                tvTpManual.setText(String.format(strNumberFormat, tradeRecord.getTpManual()));
-
-            if (tradeRecord.getSL() != null)
-                tvSL.setText(String.format(strNumberFormat, tradeRecord.getSL()));
-            if (tradeRecord.getSlPips() != null)
-                tvSlPips.setText(String.format("%.1f", tradeRecord.getSlPips()));
-            if (tradeRecord.getSlInMoney() != null)
-                tvSlMoney.setText(String.format("%.2f EUR", tradeRecord.getSlInMoney()));
-            if (tradeRecord.getRrrPlanned() != null)
-                tvRrrPlanned.setText(String.format("%.2f%%", tradeRecord.getRrrPlanned()));
-            if (tradeRecord.getLevelDistance() != null)
-                tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
-*/
         }
         return view;
     }
@@ -128,7 +102,7 @@ public class FrgTradeDetail extends Fragment {
         String strNumberFormat = "%1$.4f";
 
         tvSymbol.setText(tradeRecord.getSymbol());
-        tvLevelPrice.setText(String.format(strNumberFormat, tradeRecord.getLevelPrice())); // TODO použít String format
+        tvLevelPrice.setText(String.format(strNumberFormat, tradeRecord.getLevelPrice())); // TODO prio 2 - dořešit LOCALE ve String.format
         tvDirection.setText(tradeRecord.getDirection());
         if (tradeRecord.getOrderStatus() != null)
             tvOrderStatus.setText(tradeRecord.getOrderStatus());
@@ -136,6 +110,9 @@ public class FrgTradeDetail extends Fragment {
             tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus());
         if (tradeRecord.getOrderNumber() != null)
             tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
+            else
+            tvOrderNum.setText("");             // TODO pořešit null i u ostatních, aby nezůstávaly viset hodnoty z jiných
+
         if (tradeRecord.getTpProposed() != null)
             tvTpProposed.setText(String.format(strNumberFormat, tradeRecord.getTpProposed()));
         if (tradeRecord.getTpManual() != null)
@@ -151,6 +128,11 @@ public class FrgTradeDetail extends Fragment {
             tvRrrPlanned.setText(String.format("%.2f%%", tradeRecord.getRrrPlanned()));
         if (tradeRecord.getLevelDistance() != null)
             tvLevelDistance.setText(String.format("%.0f", tradeRecord.getLevelDistance()));
+        if (tradeRecord.getMethod() != null) tvMethod.setText(tradeRecord.getMethod()); else tvMethod.setText("");
+        if (tradeRecord.getTradeId() != null) tvTradeId.setText(String.format("%d",tradeRecord.getTradeId())); else tvTradeId.setText("");
+        if (tradeRecord.getTradeRecordStatus() != null) tvTradeRecordStatus.setText(tradeRecord.getTradeRecordStatus()); else tvTradeRecordStatus.setText("");
+
+
 
     }
 

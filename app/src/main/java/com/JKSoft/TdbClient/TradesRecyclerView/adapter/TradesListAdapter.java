@@ -122,7 +122,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         }
 
         // Order status
-        holder.tvOrderStatus.setText(tradeRecord.getOrderStatus());    //TODO doimplementovat OrderStatus
+        holder.tvOrderStatus.setText(tradeRecord.getOrderStatus());
 
         if (tradeRecord.getOrderStatus() != null) {
             int color = Color.rgb(0, 0, 0);
@@ -182,6 +182,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
             case "TS_EARLY_TURN": return "EARLY TURN";
             case "TS_IN": return "IN";
             case "TS_WAITING_FOR_SCRATCH": return "SCRATCH MODE";
+            case "TS_IN_TEST": return "IN TEST";
             case "TS_TP_REACHED": return ("TARGET");
             case "TS_STOP_LOSS_REACHED": return ("STOP LOSS");
             default: return estimatedTradeStatus;
