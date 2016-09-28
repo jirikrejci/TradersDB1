@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvSymbol"
-        android:layout_width="60dp"
+        android:layout_width="55dp"
         android:layout_height="match_parent"
         android:text="USDJPY"
         android:paddingLeft="5dp"
@@ -34,7 +34,7 @@
         android:id="@+id/imTradeDirectionIcon"
         android:layout_width="20dp"
         android:layout_height="25dp"
-        android:padding="2dp"
+        android:padding="0dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_action_arrow_top"/>
 
@@ -44,7 +44,7 @@
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:text="Sell"
-        android:paddingLeft="2dp"
+        android:paddingLeft="0dp"
         android:textSize="@dimen/trades_overview_font_size"
         android:gravity="center_vertical|start"
 
@@ -66,12 +66,12 @@
 
     <TextView
         android:id="@+id/tvOrderStatus"
-        android:layout_width="70dp"
+        android:layout_width="65dp"
         android:layout_height="match_parent"
         android:text="Pending"
         android:paddingLeft="8dp"
         android:textSize="@dimen/trades_overview_font_size"
-        android:gravity="center_vertical|start"
+        android:gravity="center_vertical|center_horizontal"
 
         />
 
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="TS_Pending"
-        android:paddingLeft="2dp"
+        android:paddingLeft="5dp"
         android:textSize="@dimen/trades_overview_font_size"
         android:gravity="center_vertical|start"
         />

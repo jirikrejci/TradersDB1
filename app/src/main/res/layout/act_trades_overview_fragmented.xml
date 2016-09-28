@@ -9,14 +9,14 @@
         android:id="@+id/frgContainerTradesOverview"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="4"
 />
 
     <RelativeLayout
         android:id="@+id/frgContainerTradesDetail"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_weight="2"
     />
 </LinearLayout>

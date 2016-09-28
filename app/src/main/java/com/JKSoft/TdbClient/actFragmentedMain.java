@@ -42,19 +42,25 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FrgTradesOverview frgTradesOverview = new FrgTradesOverview();
-        fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
+        fragmentTransaction.replace(R.id.frgContainerTradesOverview, frgTradesOverview);
         //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
         fragmentTransaction.commit();
 
+        frgTradeDetail = new FrgTradeDetail();
+
         fragmentManager.beginTransaction()
-                .add(R.id.frgContainerTradesDetail, new FrgTradeDetail())
+                .replace(R.id.frgContainerTradesDetail, frgTradeDetail)
                 .commit();
 
         //frgTradesOverview = (FrgTradesOverview)  findViewById(R.id.frgTradesOverview);
       //  ((FrgTradesOverview) findViewById(R.id.frgTradesOverview)).setSelectedItemListener(this.onSelectedItem());
       //  frgTradeDetail = (FrgTradeDetail) findViewById(R.id.frgTradesDetail2);
 
+       // frgTradesOverview.reloadData();
+
     }
+
+    //TODO - projít Styles and themes guide  https://developer.android.com/guide/topics/ui/themes.html
 
 
 /*
@@ -92,6 +98,8 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
         switch (item.getItemId()) {
             case R.id.mReloadDataFromServer:
+                frgTradesOverview.reloadData();
+                break;
             case R.id.mReadDataFromFtp:
                 Toast.makeText(this, "JK: Reload data requested", Toast.LENGTH_LONG).show();
                 break;

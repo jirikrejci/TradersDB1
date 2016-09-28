@@ -97,8 +97,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         btnReloadData.setOnClickListener(new View.OnClickListener() {   // TODO zeptat se davida, jek při vybírání ID vidět je na, která jsou v kontextu daného layoutu - dost se mi to plete, co když buodu v e dvou layoutech stejná ID?
             @Override
             public void onClick(View v) {
-                clearTradesList();
-                progressBar.setVisibility(View.VISIBLE  );
+
                 reloadData();
             }
         });
@@ -134,6 +133,10 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
    
 
     public void reloadData () {
+
+        clearTradesList();
+        progressBar.setVisibility(View.VISIBLE  );
+
 
         AsyncTask<String, Void, List<TradeRecord>> task = new AsyncTask<String, Void, List<TradeRecord>>() {
             @Override
