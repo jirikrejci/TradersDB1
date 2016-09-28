@@ -10,4 +10,7 @@
     <color name="colorTradeEarlyTurn">#9227bf</color>
     <color name="colorTradeSlReached">#f7060a</color>
     <color name="colorTradeTpReached">#6c8f0b</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorPressedItem">#cacaf9</color>
+    <color name="colorSelectedItem">#bcfad7</color>
 </resources>

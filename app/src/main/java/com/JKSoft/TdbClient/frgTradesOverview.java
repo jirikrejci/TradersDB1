@@ -87,7 +87,9 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         recView = (RecyclerView) view.findViewById(R.id.rvTradesList);
         tradesListAdapter = new TradesListAdapter(tradeRecordList, context);
         recView.setLayoutManager(new LinearLayoutManager(context));
+        recView.setItemAnimator(null);
         recView.setAdapter(tradesListAdapter);
+
         tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
         //Button

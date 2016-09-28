@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="30dp"
     android:id="@+id/viewItemRoot"
+    android:background="?android:attr/activatedBackgroundIndicator"
     android:clickable="true">
 
     <TextView
@@ -14,6 +15,8 @@
         android:paddingLeft="5dp"
         android:textSize="@dimen/trades_overview_font_size"
         android:gravity="center_vertical|start"
+        android:background="?android:attr/activatedBackgroundIndicator"
+
         />
 
     <TextView

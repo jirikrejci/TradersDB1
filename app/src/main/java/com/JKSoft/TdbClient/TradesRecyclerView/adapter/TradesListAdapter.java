@@ -21,10 +21,15 @@ import java.util.List;
  */
 public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.ItemHolder> {
 
+    //TODO zkusit použít animátor   http://stackoverflow.com/questions/32463136/recyclerview-adapter-notifyitemchanged-never-passes-payload-to-onbindviewholde
+    //TODO zkusit poižít decorator nebo decorer https://www.bignerdranch.com/blog/a-view-divided-adding-dividers-to-your-recyclerview-with-itemdecoration/
+
     private List<TradeRecord> listData;
     private LayoutInflater inflater;
     private Context context;
     private ItemClickCallback itemClickCallback;
+
+    private int selectedPosition = -1;   // pro zvýraznění vybrané položky
 
 
     public interface ItemClickCallback {
@@ -108,6 +113,17 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         TradeRecord tradeRecord = listData.get(position);
         holder.tvSymbol.setText(tradeRecord.getSymbol());
         holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO předělat na String.format
+
+        // zvýraznění vybrané položky
+
+        if (selectedPosition == position) {
+            holder.viewItemContainer.setBackgroundColor(Color.rgb(200,200,210));  // TODO dostat sem bartvu z resources
+        }   else {
+            holder.viewItemContainer.setBackgroundColor(Color.argb(0,0,0,0));  // TODO dostat sem bartvu z resources
+        }
+
+        //Selected(selectedPosition == position);
+        holder.viewItemContainer.setSelected(true);
 
         // Trade Direction
         holder.tvDirection.setText(tradeRecord.getDirection());
@@ -248,7 +264,27 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
          */
         @Override
         public void onClick(View v) {
-            itemClickCallback.onItemClick(getAdapterPosition());
+            int adapterPosition = getAdapterPosition();
+            int oldSelectedPosition = selectedPosition;
+
+            //TODO - kvuli notify musel byt nastaven RecyclerView.setItemAnimator(null), jinak to padalo. Spíš by se měl použít drawer. Ale animator by se měl nastavit taky
+            //TODO správně by asi měl být piužit dekorátor, ale i tak by bylo dobré anučit se používat animátor
+            // A taky by asi bylo dobré kolem tradu jen udělat obdélník - dají se nějak nastavit obrysy, nebo shape, nebo zviditelnit shape? (pak by to asi muselo být RelativeLayout
+
+
+            selectedPosition = adapterPosition;
+            notifyItemChanged(oldSelectedPosition);
+            notifyItemChanged(selectedPosition);
+
+
+            //notifyItemChanged(adapterPosition);
+//            notifyItemChanged(selectedPosition);
+
+            //v.setSelected(true);
+            //notifyItemChanged(getAdapterPosition());
+            itemClickCallback.onItemClick(adapterPosition);
+
+
 
 
         }
