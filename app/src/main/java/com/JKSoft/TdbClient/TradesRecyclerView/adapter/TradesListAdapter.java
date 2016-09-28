@@ -206,7 +206,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      *
      */
 
-    class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {  //TODO zkusit předělat na ButterKnife
         private TextView tvSymbol;
         private TextView tvLevelPrice;
         private ImageView imDirectionIcon;

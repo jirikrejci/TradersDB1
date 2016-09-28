@@ -1,10 +1,14 @@
 package com.JKSoft.TdbClient.Model;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.Networking.fms.Ftp;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,14 +32,27 @@ public class TdbDataSource {
 
     public static String getJsonActualTradeRecords(Context context) {
 
-        return readStringFromResources(R.raw.relevant_trades_mock, context);  // TODO udělat přepínání zdrojů dat - buď setupem v aplikaci, nebo if podle flavour a build type
-       // return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json");  // ftp source
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String actualDataSource = sharedPreferences.getString("ACTUAL_DATA_SOURCE", "");
+        switch (actualDataSource) {
+            case "FTP":
+                return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json"); // ftp source
+            case "MOCK":
+                return readStringFromResources(R.raw.relevant_trades_mock, context);  // Mock data
+            case "TDB_SERVER":
+                return "error: TDB not implemented yet";
+            default:
+                return "";
+        }
     }
 
     private static String readStringFromResources (int resID, Context context) {
         Resources resources = context.getResources();
         InputStream inputStream = resources.openRawResource(resID);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+
+
 
         StringBuffer jsonStrBuf = new StringBuffer(1024);
         String line = null;
@@ -55,9 +72,19 @@ public class TdbDataSource {
 
     public static ArrayList<TradeRecord> getActualTradeRecords(Context context) {   // TODO David vymyslet jinak mock data - context předávám  jen kvůli přístupu do resources, to je špatně
 
+
         String jsonString = getJsonActualTradeRecords(context);
+        if (jsonString.startsWith("error"))  {
+            Log.e("JK", jsonString);
+
+            return null;
+        }
+
 
         Gson gson = new GsonBuilder().create();
+
+
+
         RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
         TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
 

@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference android:key="actual_data_source"
+    <ListPreference
+        android:key="ACTUAL_DATA_SOURCE"
         android:title="Zdroj aktuálních dat"
         android:defaultValue="FTP"
-        android:entries="@array/actual_data_sources"
-        android:entryValues="@array/actual_data_sources"
-
-
-
+        android:entries="@array/actual_data_sources_options_entries"
+        android:entryValues="@array/actual_data_sources_options_values"
+        android:dialogTitle="Vyber zdroj dat pro aktualizaci"
+        android:dialogIcon="@drawable/ic_action_arrow_bottom"
+        android:summary="ahoj, toto je summary"
+        android:positiveButtonText="OK"
+        
         />
+
+    <CheckBoxPreference
+        android:key="CHECK_BOX_PREF"
+        android:title="Zaškrtni"
+        />
+
+    <PreferenceCategory
+        android:title="Database connection"/>
+
+
+    <PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="FTP settings">
+        <EditTextPreference
+            android:key="FTP_SERVER_ADDRESS"
+            android:title="FTP IP/Host name"
+            android:dialogTitle="FTP IP/Host name"
+            android:dialogMessage="Zadej IP adresu nebo hostname FTP serveru s TDB daty"
+            />
+        <EditTextPreference
+            android:title="Složka s daty"
+            android:key="FTP_FOLDER"
+            android:dialogTitle="Zadej složku s daty"
+            android:dialogMessage="Zadej složku, ve které se nachází zdroj TDB dat"
+            />
+    </PreferenceScreen>
+
+    <EditTextPreference
+        android:key="TDB_SERVER"
+        android:title="TDB Server"
+        android:dialogTitle="NAstavení TDB serveru"
+        android:dialogMessage="Zadej IP adresu nebo hostname TDB serveru"
+        />
+
+
 
 </PreferenceScreen>

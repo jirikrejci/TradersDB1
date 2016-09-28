@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.JKSoft.DataStructures.TradeRecord;
 import com.JKSoft.TdbClient.Model.TdbDataSource;
@@ -131,7 +133,6 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
     public void reloadData () {
 
-
         AsyncTask<String, Void, List<TradeRecord>> task = new AsyncTask<String, Void, List<TradeRecord>>() {
             @Override
             protected ArrayList<TradeRecord> doInBackground(String... strings) {
@@ -141,19 +142,14 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
             @Override
             protected void onPostExecute(List<TradeRecord> newTradeRecordList) {
                 super.onPostExecute(tradeRecordList);
-               // Gson gson = new GsonBuilder().create();
-//                RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
-  //              TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
-
-          //      tradeRecordList.clear();
-    //            for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoň předělat na for each - nebo rovnou předělat, ať se něco nauíčm
-      //              tradeRecordList.add(tradeRecords[i]);
-
-
-
                 progressBar.setVisibility(View.GONE);
 
-
+                // oštření, pokud se data nepodařilo načíst
+                if (newTradeRecordList == null) {
+                    Log.d("JK", "Empty input actual trade list - skipping OnPostExecute");
+                    Toast.makeText(getContext(), "Nepodařilo se načíst aktuální data", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
 
                 //tradeRecordList = newTradeRecordList;   // toto nefungovalo - adaptér s tím měl problémy
@@ -164,10 +160,6 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
                 tradesListAdapter.notifyDataSetChanged();
 
-         /*       RelevantTradesExch tradesExch;
-                Gson gson = new GsonBuilder().create();
-                tradesExch = gson.fromJson(text,RelevantTradesExch.class);
-*/
             }
         };
         task.execute("Ahoj");
@@ -191,60 +183,6 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
 
 
-    /**
-     * This hook is called whenever an item in your options menu is selected.
-     * The default implementation simply returns false to have the normal
-     * processing happen (calling the item's Runnable or sending a message to
-     * its Handler as appropriate).  You can use this method for any items
-     * for which you would like to do processing without those other
-     * facilities.
-     * <p/>
-     * <p>Derived classes should call through to the base class for it to
-     * perform the default menu handling.</p>
-     *
-     * @param item The menu item that was selected.
-     * @return boolean Return false to allow normal menu processing to
-     * proceed, true to consume it here.
-     * @see #onCreateOptionsMenu
-     */
-
-
-    /* TODO zprovoznit menu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()) {
-            case R.id.mReloadDataFromServer:
-            case R.id.mReadDataFromFtp:
-                Toast.makeText(this, "JK: Reload data requested", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.mWipeDataFromMemory:
-                Toast.makeText(this, "JK: Wipe data from memory", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.mAbout:
-                aboutMenuItem();
-                break;
-            default:
-                Toast.makeText(this, "\"" + item.getTitle() + "\" menu item selected", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return true;
-    }
-
-    private void aboutMenuItem() {
-        new AlertDialog.Builder(this)
-                .setTitle("About")
-                .setMessage("Trader DB by Jiri Krejci C")
-                .setIcon(R.mipmap.ic_launcher)
-                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        }
-                ).show();
-    }
-    */
 }
 
 

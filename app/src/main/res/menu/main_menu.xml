@@ -42,7 +42,8 @@
         <item android:id="@+id/mSettings"
             android:title="Settings"
             android:orderInCategory="7"
-            app:showAsAction="never"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_settings_white_24dp"
             />
 
         <item android:id="@+id/mAbout"

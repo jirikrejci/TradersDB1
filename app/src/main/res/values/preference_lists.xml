@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="actual_data_sources_options_entries">
+        <item>FTP</item>
+        <item>Mock data</item>
+        <item>TDB server</item>
+    </array>
+
+    <array name="actual_data_sources_options_values">
+        <item>FTP</item>
+        <item>MOCK</item>
+        <item>TDB_SERVER</item>
+    </array>
+
+
+</resources>
