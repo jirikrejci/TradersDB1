@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient;
+package com.JKSoft.TdbClient.app;
 
 import android.content.Intent;
 import android.os.Bundle;

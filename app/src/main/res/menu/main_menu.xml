@@ -3,14 +3,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <item android:id="@+id/mReloadDataFromServer"
-            android:icon="@drawable/ic_action_arrow_bottom"
+            android:icon="@drawable/ic_data_update_alt_white_24dp"
             android:orderInCategory="1"
             app:showAsAction="always"
             android:title="Reload Data" />
 
     <item android:id="@+id/mReadDataFromFtp"
         android:title="Read data from FTP"
-        android:icon="@drawable/ic_action_arrow_bottom"
         android:orderInCategory="2"
         app:showAsAction="withText"
         />

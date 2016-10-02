@@ -8,14 +8,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.JKSoft.TdbClient.MainActivity">
+    tools:context="com.JKSoft.TdbClient.app_old.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- style="@style/Base.TextAppearance.AppCompat.Button"-->
+
         <Button
+            style="@style/Button"
+            android:textAllCaps="false"
             android:id="@+id/btnHelloGet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,6 +29,8 @@
             />
 
         <Button
+            style="@style/Button"
+            android:textAllCaps="false"
             android:id="@+id/btnHelloPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-                               tools:context="com.JKSoft.TdbClient.actTradeDetail">
+    tools:context="com.JKSoft.TdbClient.app.actTradeDetail">
 
 
 <GridLayout
@@ -25,61 +25,52 @@
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="Symbol:"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSymbol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="Level:"/>
 
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvLevelPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="0dp"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
     <TextView
         android:layout_column="2"
         android:id="@+id/tvDirection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:paddingLeft="10dp"
         android:text="buy"/>
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="Level dist:"/>
 
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvLevelDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="+xxx"
         android:paddingStart="0dp"
         />
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="ETS:"/>
 
 
@@ -88,37 +79,31 @@
     <TextView
         android:layout_column="1"
         android:id="@+id/tvEstimatedTradeStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="TS_xxxx"
-
         android:paddingStart="0dp"/>
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="Target:"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvTP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="TP prop."/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvTpProposed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
     <TextView

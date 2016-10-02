@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient;
+package com.JKSoft.TdbClient.fragments;
 
 import android.content.Context;
 import android.os.AsyncTask;

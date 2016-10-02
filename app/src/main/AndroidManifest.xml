@@ -10,18 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.JKSoft.TdbClient.MainActivity">
+        <activity android:name="com.JKSoft.TdbClient.app_old.MainActivity">
         </activity>
-        <activity android:name="com.JKSoft.TdbClient.actFragmentedMain">
+        <activity android:name="com.JKSoft.TdbClient.app.actFragmentedMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.JKSoft.TdbClient.actPreferences" />
-        <activity android:name="com.JKSoft.TdbClient.actTradesOverview" />
-        <activity android:name="com.JKSoft.TdbClient.actTradeDetail"></activity>
+        <activity android:name="com.JKSoft.TdbClient.app.actPreferences" />
+        <activity android:name="com.JKSoft.TdbClient.app_old.actTradesOverview" />
+        <activity android:name="com.JKSoft.TdbClient.app.actTradeDetail"></activity>
     </application>
 
 </manifest>

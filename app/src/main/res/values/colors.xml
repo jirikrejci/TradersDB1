@@ -13,4 +13,5 @@
     <color name="colorTransparent">#00000000</color>
     <color name="colorPressedItem">#cacaf9</color>
     <color name="colorSelectedItem">#bcfad7</color>
+    <color name="colorTradeDetailTextColor">#000000</color>
 </resources>

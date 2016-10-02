@@ -22,13 +22,13 @@
 </LinearLayout>
 
     <!--
-    android:name="com.JKSoft.TdbClient.FrgTradesOverview"
+    android:name="com.JKSoft.TdbClient.fragments.FrgTradesOverview"
     tools:layout="@layout/lay_trades_overview"
     -->
 
 
 
     <!--
-    android:name="com.JKSoft.TdbClient.FrgTradeDetail"
+    android:name="com.JKSoft.TdbClient.fragments.FrgTradeDetail"
     tools:layout="@layout/lay_trade_detail"
     -->

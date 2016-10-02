@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient;
+package com.JKSoft.TdbClient.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
+import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 
@@ -41,7 +43,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         setContentView(R.layout.act_trades_overview_fragmented);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        FrgTradesOverview frgTradesOverview = new FrgTradesOverview();
+        frgTradesOverview = new FrgTradesOverview();
         fragmentTransaction.replace(R.id.frgContainerTradesOverview, frgTradesOverview);
         //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
         fragmentTransaction.commit();
