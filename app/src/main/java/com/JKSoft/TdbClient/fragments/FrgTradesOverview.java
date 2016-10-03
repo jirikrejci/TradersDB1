@@ -93,7 +93,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
         // natavení listeneru pro click v seznamu
 
-
+        reloadData();
 
         return view;
     }

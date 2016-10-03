@@ -4,6 +4,7 @@ package com.JKSoft.TdbClient.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FrgTradeDetail extends Fragment {
+
+    public static final String SELECTED_RECORD_JSON = "SELECTED_RECORD_JSON";
+    public static final String SELECTED_ITEM_POS = "SELECTED_ITEM_POS";
 
 
     @BindView (R.id.tvSymbol) TextView tvSymbol;
@@ -43,8 +47,8 @@ public class FrgTradeDetail extends Fragment {
     public static FrgTradeDetail newInstance (int p, String jsonStr) {
         FrgTradeDetail frgTradeDetail = new FrgTradeDetail();
         Bundle arguments = new Bundle();
-        arguments.putInt("SELECTED_ITEM", p);
-        arguments.putString("JSON", jsonStr);
+        arguments.putInt(SELECTED_ITEM_POS, p);
+        arguments.putString(SELECTED_RECORD_JSON, jsonStr);
         frgTradeDetail.setArguments(arguments);
         return frgTradeDetail;
     }
@@ -78,8 +82,8 @@ public class FrgTradeDetail extends Fragment {
 
         if (arguments != null) {
 
-            String jsonRecordStr = arguments.getString("JSON");
-            int p = arguments.getInt("SELECTED_ITEM");
+            String jsonRecordStr = arguments.getString(SELECTED_RECORD_JSON);
+            int p = arguments.getInt(SELECTED_ITEM_POS);
             Gson gson = new GsonBuilder().create();
             TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
 
@@ -87,6 +91,23 @@ public class FrgTradeDetail extends Fragment {
 
         }
         return view;
+    }
+
+
+    /**
+     * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+     * has returned, but before any saved state has been restored in to the view.
+     * This gives subclasses a chance to initialize themselves once
+     * they know their view hierarchy has been completely created.  The fragment's
+     * view hierarchy is not however attached to its parent at this point.
+     *
+     * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     */
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i("JK", "in onViewCreated");
     }
 
     public void displayTradeRecordJson(String jsonRecordStr) {

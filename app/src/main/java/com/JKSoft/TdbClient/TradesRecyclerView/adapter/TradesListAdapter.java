@@ -16,6 +16,9 @@ import com.example.jirka.TdbClient.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Jirka on 15.9.2016.
  */
@@ -224,10 +227,10 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      */
 
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {  //TODO zkusit předělat na ButterKnife
-        private TextView tvSymbol;
-        private TextView tvLevelPrice;
-        private ImageView imDirectionIcon;
-        private TextView tvDirection;
+        @BindView(R.id.tvSymbol) TextView tvSymbol;
+        @BindView(R.id.tvLevelPrice) TextView tvLevelPrice;
+        @BindView(R.id.imTradeDirectionIcon) ImageView imDirectionIcon;
+        @BindView(R.id.tvDirection) TextView tvDirection;
         private TextView tvOrderStatus;
         private TextView tvEstimatedTradeStatus;
         private TextView tvLevelDistance;
@@ -239,14 +242,19 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
          */
         public ItemHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
 
-            tvSymbol = (TextView) itemView.findViewById(R.id.tvSymbol);
-            tvLevelPrice = (TextView) itemView.findViewById(R.id.tvLevelPrice);
-            imDirectionIcon = (ImageView) itemView.findViewById(R.id.imTradeDirectionIcon);
-            tvDirection = (TextView) itemView.findViewById(R.id.tvDirection);
+            // následující položky převedeny pod Butterknife
+
+ //           tvLevelPrice = (TextView) itemView.findViewById(R.id.tvLevelPrice);
+//            imDirectionIcon = (ImageView) itemView.findViewById(R.id.imTradeDirectionIcon);
+//            tvDirection = (TextView) itemView.findViewById(R.id.tvDirection);
+
+            // násldující zůstává
             tvOrderStatus = (TextView) itemView.findViewById(R.id.tvOrderStatus);
             tvEstimatedTradeStatus = (TextView) itemView.findViewById(R.id.tvEstimatedTradeStatus);
             tvLevelDistance = (TextView) itemView.findViewById(R.id.tvLevelDistance);
+
 
             // uložení odkazu na item group view pro nastavení listeneru
             viewItemContainer = itemView.findViewById(R.id.viewItemRoot);

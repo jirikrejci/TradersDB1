@@ -10,7 +10,7 @@ import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class actTradeDetail extends AppCompatActivity {
+public class actTradeDetail_old extends AppCompatActivity {
 
     TextView tvSymbol;
     TextView tvLevelPrice;

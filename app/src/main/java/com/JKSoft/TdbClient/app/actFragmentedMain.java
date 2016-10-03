@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.JKSoft.DataStructures.TradeRecord;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
-import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 
 import java.util.List;
@@ -24,7 +23,6 @@ import java.util.List;
 public class actFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
 
     RecyclerView recView;
-    TradesListAdapter tradesListAdapter;
     FrgTradesOverview frgTradesOverview;
     FrgTradeDetail frgTradeDetail;
     Boolean twoFragments;
@@ -74,6 +72,9 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
     }
 
+
+
+
     //TODO - projít Styles and themes guide  https://developer.android.com/guide/topics/ui/themes.html
 
 
@@ -81,7 +82,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     @Override
 
     public void onItemClick(int p) {
-        Intent intent = new Intent(this, actTradeDetail.class);
+        Intent intent = new Intent(this, actTradeDetail_old.class);
         TradeRecord tradeRecord = tradeRecordList.get(p);        //TODO očetřit aby se správně pracovalo jen s jedním zdrojem dat !!! Array nebo List tradeRecords je zde stejně null
         Gson gson = new GsonBuilder().create();                     // TODO zeptat se kluku, jak co nejefektivněji předávat record do nové aktivity. Možná to ale také vtřeší framy
         String jsonRecordStr = gson.toJson(tradeRecord);
@@ -155,11 +156,17 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     @Override           // TODO nezdá se mi myměňování framů. Nejdou data prostě jen updatovat?
     public void onSelectedItem(int p, String jsonItem) {
         //Toast.makeText(this, "Položka " + p + "přijata v hlavní aktivitě", Toast.LENGTH_SHORT).show();
+        if (twoFragments) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgContainerTradesDetail);
+            frgTradeDetail.displayTradeRecordJson(jsonItem);
+        } else {
+            Intent intent = new Intent(this, actTradeDetail.class);
+            intent.putExtra(FrgTradeDetail.SELECTED_RECORD_JSON, jsonItem);
+            intent.putExtra(FrgTradeDetail.SELECTED_ITEM_POS, p);
+            startActivity(intent);
+        }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgContainerTradesDetail);
-
-        frgTradeDetail.displayTradeRecordJson(jsonItem);
 
 /*
         // verze s vytvořením nové instance a prohozením

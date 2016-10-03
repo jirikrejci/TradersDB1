@@ -102,7 +102,7 @@ public class actTradesOverview extends AppCompatActivity implements TradesListAd
 
     @Override
     public void onItemClick(int p) {
-        Intent intent = new Intent(this, actTradeDetail.class);
+        Intent intent = new Intent(this, actTradeDetail_old.class);
         TradeRecord tradeRecord = tradeRecordList.get(p);        //TODO očetřit aby se správně pracovalo jen s jedním zdrojem dat !!! Array nebo List tradeRecords je zde stejně null
         Gson gson = new GsonBuilder().create();                     // TODO zeptat se kluku, jak co nejefektivněji předávat record do nové aktivity. Možná to ale také vtřeší framy
         String jsonRecordStr = gson.toJson(tradeRecord);

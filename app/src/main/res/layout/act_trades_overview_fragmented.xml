@@ -8,7 +8,7 @@
 />
 
     <RelativeLayout
-        android:id="@+id/frgContainerTradesDetail"
+        android:id="@+id/frgContainerTradesOverview"
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
