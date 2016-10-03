@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.Model;
+package com.JKSoft.TdbClient.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -86,16 +86,14 @@ public class TdbDataSource {
 
 
         RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
-        TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
-
-        ArrayList <TradeRecord> tradeRecordList = new ArrayList<TradeRecord> ();
-        for (TradeRecord tradeRecord: tradeRecords) {              // TODO zkusit, jestli gson neumí rovnou nahrát datata do ArrayList
-            tradeRecordList.add(tradeRecord);
-        }
+        return relevantTradesExch.getTrades();
 
 
+//        ArrayList <TradeRecord> tradeRecordList = new ArrayList<TradeRecord> ();
+//        for (TradeRecord tradeRecord: tradeRecords) {              // TODO smazat
+//            tradeRecordList.add(tradeRecord);
+//        }
 
-        return tradeRecordList;
     }
 
 

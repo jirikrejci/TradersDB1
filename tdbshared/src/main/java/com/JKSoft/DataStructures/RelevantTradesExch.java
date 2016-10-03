@@ -2,7 +2,7 @@ package com.JKSoft.DataStructures;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * Created by Jirka on 28.8.2016.
@@ -14,10 +14,10 @@ public class RelevantTradesExch {
     @SerializedName("protocol version")
     String protocolVersion;
 
-    TradeRecord [] trades;
+    ArrayList<TradeRecord> trades;
 
 
-    public TradeRecord [] getTrades () {
+    public ArrayList <TradeRecord> getTrades () {
         return trades;
     }
 
@@ -26,7 +26,7 @@ public class RelevantTradesExch {
         return "RelevantTradesExch:{" +
                 "\ndate='" + date + '\'' +
                 "\n protocolVersion='" + protocolVersion + '\'' +
-                "\n trades=" + Arrays.toString(trades) +
+                "\n trades=" + "TO BE IMPLEMENTED" + // Arrays.toString(trades) +
                 '}';
     }
 }

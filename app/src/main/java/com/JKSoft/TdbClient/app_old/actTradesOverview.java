@@ -52,11 +52,7 @@ public class actTradesOverview extends AppCompatActivity implements TradesListAd
         if (jsonStr != null || jsonStr == "") {
             Gson gson = new GsonBuilder().create();
             RelevantTradesExch tradesExch = gson.fromJson(jsonStr, RelevantTradesExch.class);
-            TradeRecord[] tradeRecords;   //TODO překkopat, jestli rovnou nejde do listu
-            tradeRecords = tradesExch.getTrades();
-            for (int i = 0; i < tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
-                tradeRecordList.add(tradeRecords[i]);
-            }
+            ArrayList<TradeRecord> tradeRecordList =  tradesExch.getTrades();
         }
 
 
@@ -83,11 +79,14 @@ public class actTradesOverview extends AppCompatActivity implements TradesListAd
                 super.onPostExecute(jsonString);
                 Gson gson = new GsonBuilder().create();
                 RelevantTradesExch relevantTradesExch = gson.fromJson(jsonString, RelevantTradesExch.class);
-                TradeRecord[] tradeRecords = relevantTradesExch.getTrades();
+
+                ArrayList<TradeRecord> newTradeRecordList = relevantTradesExch.getTrades();
 
                 tradeRecordList.clear();
-                for (int i = 0; i< tradeRecords.length; i++) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
-                    tradeRecordList.add(tradeRecords[i]);
+
+
+                for (TradeRecord tradeRecord: newTradeRecordList) {              // TODO pokud nepůjde, alespoˇn předělat na for each - nebo rovnou předělat, ať se něco nauíčm
+                    tradeRecordList.add(tradeRecord);
                 }
                 tradesListAdapter.notifyDataSetChanged();
          /*       RelevantTradesExch tradesExch;
