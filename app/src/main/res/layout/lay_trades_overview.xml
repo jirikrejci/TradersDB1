@@ -13,7 +13,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvTradesList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:clickable="true">
 
@@ -24,13 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <Button
-        android:id="@+id/btnReloadData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:text="Reload data"
-        />
+
 
     <ProgressBar
         android:id="@+id/pbDataLoadProgressBar"

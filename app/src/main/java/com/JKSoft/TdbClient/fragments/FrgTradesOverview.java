@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -35,7 +34,6 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     List<TradeRecord> tradeRecordList;
 
     @BindView(R.id.pbDataLoadProgressBar)  ProgressBar progressBar;
-    @BindView(R.id.btnReloadData) Button btnReloadData;
 
     Context context;
 
@@ -92,15 +90,6 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
         tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
-        //Button
-        //Button btnReloadData = (Button) view.findViewById(R.id.btnReloadData);
-        btnReloadData.setOnClickListener(new View.OnClickListener() {   // TODO zeptat se davida, jek při vybírání ID vidět je na, která jsou v kontextu daného layoutu - dost se mi to plete, co když buodu v e dvou layoutech stejná ID?
-            @Override
-            public void onClick(View v) {
-
-                reloadData();
-            }
-        });
 
         // natavení listeneru pro click v seznamu
 
