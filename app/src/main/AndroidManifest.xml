@@ -20,8 +20,6 @@
         </activity>
 
         <activity android:name="com.JKSoft.TdbClient.app.actPreferences" />
-        <activity android:name="com.JKSoft.TdbClient.app_old.actTradesOverview" />
-        <activity android:name="com.JKSoft.TdbClient.app_old.actTradeDetail_old"></activity>
         <activity android:name="com.JKSoft.TdbClient.app.actTradeDetail"
             android:parentActivityName="com.JKSoft.TdbClient.app.actFragmentedMain">
         </activity>
