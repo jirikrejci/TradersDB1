@@ -17,7 +17,6 @@ import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.DataStructures.TradeRecord;
 import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
-import com.JKSoft.TdbClient.app.actTradeDetail;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

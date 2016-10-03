@@ -21,7 +21,7 @@
 
         <activity android:name="com.JKSoft.TdbClient.app.actPreferences" />
         <activity android:name="com.JKSoft.TdbClient.app_old.actTradesOverview" />
-        <activity android:name="com.JKSoft.TdbClient.app.actTradeDetail"></activity>
+        <activity android:name="com.JKSoft.TdbClient.app_old.actTradeDetail"></activity>
     </application>
 
 </manifest>

@@ -27,6 +27,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     TradesListAdapter tradesListAdapter;
     FrgTradesOverview frgTradesOverview;
     FrgTradeDetail frgTradeDetail;
+    Boolean twoFragments;
 
     List<TradeRecord> tradeRecordList;
 
@@ -48,11 +49,22 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
         fragmentTransaction.commit();
 
-        frgTradeDetail = new FrgTradeDetail();
+        if (null == findViewById(R.id.frgContainerTradesDetail)) {
+            twoFragments = false;
+        } else {
+            twoFragments = true;
 
-        fragmentManager.beginTransaction()
-                .replace(R.id.frgContainerTradesDetail, frgTradeDetail)
-                .commit();
+            frgTradeDetail = new FrgTradeDetail();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frgContainerTradesDetail, frgTradeDetail)
+                    .commit();
+        }
+
+
+
+
+
 
         //frgTradesOverview = (FrgTradesOverview)  findViewById(R.id.frgTradesOverview);
       //  ((FrgTradesOverview) findViewById(R.id.frgTradesOverview)).setSelectedItemListener(this.onSelectedItem());
