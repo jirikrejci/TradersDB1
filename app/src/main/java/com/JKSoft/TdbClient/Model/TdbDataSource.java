@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.model;
+package com.JKSoft.TdbClient.Model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
