@@ -65,13 +65,12 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
-    compile 'com.android.support:recyclerview-v7:23.2.0'
+    compile 'com.android.support:recyclerview-v7:24.2.0'
     // bez následujícího nastavení kompatibilit padal Gradle build
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
-    compile project(':tdbshared')
-
     // butterknife support
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile project(':networkingJK')
 }

@@ -1,5 +1,6 @@
-package com.JKSoft.DataStructures;
+package com.JKSoft.TdbClient.dataStructures;
 
+import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -29,4 +30,7 @@ public class RelevantTradesExch {
                 "\n trades=" + "TO BE IMPLEMENTED" + // Arrays.toString(trades) +
                 '}';
     }
+
+
+
 }

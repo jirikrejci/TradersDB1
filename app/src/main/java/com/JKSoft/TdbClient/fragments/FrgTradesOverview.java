@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.JKSoft.TdbClient.Model.TdbDataSource;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;

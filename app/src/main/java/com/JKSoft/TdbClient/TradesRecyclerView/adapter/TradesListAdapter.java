@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 
 import java.util.List;

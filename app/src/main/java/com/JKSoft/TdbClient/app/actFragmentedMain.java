@@ -13,12 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.TdbClient.Model.TdbRealm;
+import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
 import com.example.jirka.TdbClient.R;
 
 import java.util.List;
+
+import io.realm.Realm;
 
 public class actFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
 
@@ -39,6 +42,8 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Realm.init(this);  // iniciace Realm
+
         setContentView(R.layout.act_trades_overview_fragmented);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -63,12 +68,6 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
 
 
-
-        //frgTradesOverview = (FrgTradesOverview)  findViewById(R.id.frgTradesOverview);
-      //  ((FrgTradesOverview) findViewById(R.id.frgTradesOverview)).setSelectedItemListener(this.onSelectedItem());
-      //  frgTradeDetail = (FrgTradeDetail) findViewById(R.id.frgTradesDetail2);
-
-       // frgTradesOverview.reloadData();
 
     }
 
@@ -118,8 +117,14 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
             case R.id.mReadDataFromFtp:
                 Toast.makeText(this, "JK: Reload data requested", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.mDeleteDataFromRealm:
+                TdbRealm.deleteAllRealmData();
+                break;
             case R.id.mWipeDataFromMemory:
                 Toast.makeText(this, "JK: Wipe data from memory", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.mRealmTests:
+                TdbRealm.realmTests(this);
                 break;
             case R.id.mAbout:
                 aboutMenuItem();
@@ -166,19 +171,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
             intent.putExtra(FrgTradeDetail.SELECTED_ITEM_POS, p);
             startActivity(intent);
         }
-
-
-/*
-        // verze s vytvořením nové instance a prohozením
-        FrgTradeDetail frgTradeDetail = FrgTradeDetail.newInstance(p, jsonItem);
-        FragmentTransaction frgt = getSupportFragmentManager().beginTransaction();
-        frgt.replace(R.id.frgTradesDetail2, frgTradeDetail);
-        frgt.addToBackStack(null);
-        frgt.commit();
-        */
-
     }
-
 
 
 

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.JKSoft.DataStructures.TradeRecord;
+import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

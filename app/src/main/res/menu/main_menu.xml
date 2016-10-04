@@ -19,6 +19,11 @@
             app:showAsAction="never"
             />
 
+        <item android:id="@+id/mRealmTests"
+            android:title="Realm tests"
+            app:showAsAction="never"
+            />
+
         <item android:id="@+id/mReloadDataFromRealm"
             android:title="Read data from Realm"
             android:orderInCategory="4"

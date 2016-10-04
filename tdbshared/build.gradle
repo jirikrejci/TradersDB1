@@ -7,6 +7,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
     compile project(':networkingJK')
+    compile project(':app')
 }
 
 //TODO http://stackoverflow.com/questions/24658422/android-studio-0-8-1-creating-modules-without-copying-files

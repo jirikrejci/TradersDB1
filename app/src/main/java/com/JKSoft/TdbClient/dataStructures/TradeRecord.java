@@ -1,13 +1,16 @@
-package com.JKSoft.DataStructures;
+package com.JKSoft.TdbClient.dataStructures;
 
 import com.google.gson.annotations.SerializedName;
+
+import io.realm.RealmObject;
 
 /**
  * Created by Jirka on 25.8.2016.
  */
-public class TradeRecord {
+public class TradeRecord extends RealmObject {
 
-    // private memmbers
+   // private memmbers
+ //   @PrimaryKey
     @SerializedName("ID")
     Long tradeId;
 
@@ -160,8 +163,10 @@ public class TradeRecord {
 
 
 
-    //constructor
+    //constructors
+    public TradeRecord() {
 
+    }
 
     public TradeRecord(String symbol, Double levelPrice, String direction) {
         this.symbol = symbol;
@@ -211,7 +216,9 @@ public class TradeRecord {
     @Override
     public String toString() {
         String output_str = "";
-        output_str = "\nTrade> " + symbol +
+        output_str = "\nTrade> " +
+                "id_" + tradeId +
+                "\t" +symbol +
                 "\t " + String.format("%8.4f", levelPrice) +
                 "\t" + direction +
                 "\t" + requestResult +

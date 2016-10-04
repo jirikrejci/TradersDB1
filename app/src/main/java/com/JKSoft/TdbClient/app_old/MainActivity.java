@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.JKSoft.DataStructures.RelevantTradesExch;
+import com.JKSoft.TdbClient.dataStructures.RelevantTradesExch;
 import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.Networking.gson.JsonConversions;
 import com.JKSoft.TdbClient.Convertors.Convertors;
