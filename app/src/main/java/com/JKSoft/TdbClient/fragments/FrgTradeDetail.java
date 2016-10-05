@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.JKSoft.TdbClient.Convertors.TradeRecordConvertor;
+import com.JKSoft.TdbClient.Model.TdbRealm;
 import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
@@ -22,6 +24,8 @@ public class FrgTradeDetail extends Fragment {
 
     public static final String SELECTED_RECORD_JSON = "SELECTED_RECORD_JSON";
     public static final String SELECTED_ITEM_POS = "SELECTED_ITEM_POS";
+    public static final String SELECTED_RECORD_TRADE_ID = "SELECTED_RECORD_TRADE_ID";
+    public static final String TAG = "Tdb-FrgTradeDetail";
 
 
     @BindView (R.id.tvSymbol) TextView tvSymbol;
@@ -44,11 +48,12 @@ public class FrgTradeDetail extends Fragment {
     @BindView (R.id.tvTradeRecordStatus) TextView tvTradeRecordStatus;
 
 
-    public static FrgTradeDetail newInstance (int p, String jsonStr) {
+    public static FrgTradeDetail newInstance (int p, String jsonStr, Long tradeID) {   // TODO - tohle je forma injection, zvážit, jestli časem nezprovozním
         FrgTradeDetail frgTradeDetail = new FrgTradeDetail();
         Bundle arguments = new Bundle();
         arguments.putInt(SELECTED_ITEM_POS, p);
         arguments.putString(SELECTED_RECORD_JSON, jsonStr);
+        arguments.putLong(SELECTED_RECORD_TRADE_ID, tradeID);
         frgTradeDetail.setArguments(arguments);
         return frgTradeDetail;
     }
@@ -84,10 +89,16 @@ public class FrgTradeDetail extends Fragment {
 
             String jsonRecordStr = arguments.getString(SELECTED_RECORD_JSON);
             int p = arguments.getInt(SELECTED_ITEM_POS);
-            Gson gson = new GsonBuilder().create();
-            TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
+            Long tradeID = arguments.getLong (SELECTED_RECORD_TRADE_ID);
 
+
+            //Gson gson = new GsonBuilder().create();                                       //TODO smazat - staré volání přes JSON
+            //TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
+
+            TradeRecord tradeRecord = TdbRealm.getTradeFromRealm(tradeID);
+            Log.d(TAG, "onCreateView - displaying tradeId = " + tradeID);
             displayTradeRecord(tradeRecord);
+
 
         }
         return view;
@@ -118,6 +129,19 @@ public class FrgTradeDetail extends Fragment {
     }
 
 
+    public void displayTradeRecord (Long tradeId) {
+
+
+        TradeRecord tradeRecord = TdbRealm.getTradeFromRealm(tradeId);
+        Log.d(TAG, "displayTradeRecord: displaying tradeId = " + tradeId);
+        displayTradeRecord(tradeRecord);
+
+    }
+
+
+
+
+
     public void displayTradeRecord (TradeRecord tradeRecord) {    // TODO ?? zeptat se jestli statická třída nemá přístup k dynamickým proměnným třídy - vypadá to tak
 
         String strNumberFormat = "%1$.4f";
@@ -128,7 +152,7 @@ public class FrgTradeDetail extends Fragment {
         if (tradeRecord.getOrderStatus() != null)
             tvOrderStatus.setText(tradeRecord.getOrderStatus());
         if (tradeRecord.getEstimatedTradeStatus() != null)
-            tvEstimatedTradeStatus.setText(tradeRecord.getEstimatedTradeStatus());
+            tvEstimatedTradeStatus.setText(TradeRecordConvertor.tradeStatus2Text(tradeRecord.getEstimatedTradeStatus()));
         if (tradeRecord.getOrderNumber() != null)
             tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
             else

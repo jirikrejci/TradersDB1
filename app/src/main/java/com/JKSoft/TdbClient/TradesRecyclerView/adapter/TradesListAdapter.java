@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.JKSoft.TdbClient.Convertors.TradeRecordConvertor;
 import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 
@@ -36,7 +37,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
 
     public interface ItemClickCallback {
-        void onItemClick(int p);  //vystřelí (will fire) vždy když uživatel klikne kamkoliv
+        void onItemClick(int p, Long tradeID);  //vystřelí (will fire) vždy když uživatel klikne kamkoliv
         //void onSecondaryIconCllick (int p);
     }
 
@@ -104,7 +105,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      * on (e.g. in a click listener), use {@link ViewHolder#getAdapterPosition()} which will
      * have the updated adapter position.
      * <p/>
-     * Override {@link #onBindViewHolder(ViewHolder, int, List)} instead if Adapter can
+     * Override {@link #onBindViewHolder(ViewHolder, int, position)} instead if Adapter can
      * handle effcient partial bind.
      *
      * @param holder   The ViewHolder which should be updated to represent the contents of the
@@ -155,7 +156,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         }
 
         // Trade Status
-        holder.tvEstimatedTradeStatus.setText(tradeStatus2Text(tradeRecord.getEstimatedTradeStatus())); //TODO doimplementovat EstimatedTradeStatus
+        holder.tvEstimatedTradeStatus.setText (TradeRecordConvertor.tradeStatus2Text(tradeRecord.getEstimatedTradeStatus())); //TODO doimplementovat EstimatedTradeStatus
 
         if (tradeRecord.getEstimatedTradeStatus() != null) {
             int color = Color.rgb(0, 0, 0);
@@ -195,18 +196,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
     }
 
-    private String tradeStatus2Text(String estimatedTradeStatus) {
-        switch (estimatedTradeStatus) {
-            case "TS_PENDING": return "PENDING";
-            case "TS_EARLY_TURN": return "EARLY TURN";
-            case "TS_IN": return "IN";
-            case "TS_WAITING_FOR_SCRATCH": return "SCRATCH MODE";
-            case "TS_IN_TEST": return "IN TEST";
-            case "TS_TP_REACHED": return ("TARGET");
-            case "TS_STOP_LOSS_REACHED": return ("STOP LOSS");
-            default: return estimatedTradeStatus;
-        }
-    }
+
 
 
     /**
@@ -290,7 +280,9 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
             //v.setSelected(true);
             //notifyItemChanged(getAdapterPosition());
-            itemClickCallback.onItemClick(adapterPosition);
+            TradeRecord selectedTrade = listData.get(selectedPosition);
+
+            itemClickCallback.onItemClick(selectedPosition, selectedTrade.getTradeId() );
 
 
 

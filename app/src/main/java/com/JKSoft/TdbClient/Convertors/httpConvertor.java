@@ -6,7 +6,7 @@ import retrofit.mime.TypedByteArray;
 /**
  * Created by Jirka on 19.8.2016.
  */
-public class Convertors {
+public class HttpConvertor {
     public static String responseBodyToString (Response response) {
         String result = "";
         //Try to get response body

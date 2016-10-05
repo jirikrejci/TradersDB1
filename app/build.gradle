@@ -16,8 +16,8 @@ android {
     buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId 'comJKSoft.tradersdb1'
-        minSdkVersion 19
-        targetSdkVersion 19
+        minSdkVersion 18
+        targetSdkVersion 18
         versionCode 1
         versionName "1.0"
     }

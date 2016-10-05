@@ -95,7 +95,7 @@ public class TdbRealm {
 
     }
 
-    public static TradeRecord getTradeFromRealm (int tradeId) {
+    public static TradeRecord getTradeFromRealm (Long tradeId) {
         Realm realm = Realm.getDefaultInstance();
         ArrayList <TradeRecord> tradeRecords = new ArrayList<TradeRecord>();
 
@@ -150,7 +150,7 @@ public class TdbRealm {
 
         ArrayList<TradeRecord> allTradesList = getAllTradesFromRealm(); Log.d(TAG, "allTradeList size = " + allTradesList.size());
         ArrayList<TradeRecord> pendingTradesList = getAllPendingTradesFromRealm(); Log.d(TAG, "pendingTradeList size = " + pendingTradesList.size());
-        int id = 2968;
+        Long id = 2968L;
         TradeRecord actualTradeRecord = getTradeFromRealm(id);
         if (null != actualTradeRecord)
             Log.d(TAG, "actualTradeRecord (searched id_" + id + " = " + actualTradeRecord.toString()) ;

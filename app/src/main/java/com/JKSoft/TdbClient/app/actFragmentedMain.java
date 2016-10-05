@@ -14,12 +14,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.JKSoft.TdbClient.Model.TdbRealm;
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
 import com.example.jirka.TdbClient.R;
-
-import java.util.List;
 
 import io.realm.Realm;
 
@@ -30,7 +27,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     FrgTradeDetail frgTradeDetail;
     Boolean twoFragments;
 
-    List<TradeRecord> tradeRecordList;
+    //List<TradeRecord> tradeRecordList;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,6 +55,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
             twoFragments = true;
 
             frgTradeDetail = new FrgTradeDetail();
+
 
             fragmentManager.beginTransaction()
                     .replace(R.id.frgContainerTradesDetail, frgTradeDetail)
@@ -112,8 +110,12 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
         switch (item.getItemId()) {
             case R.id.mReloadDataFromServer:
-                frgTradesOverview.reloadData();
+                frgTradesOverview.reloadDataFromSource();
                 break;
+            case R.id.mReloadDataFromRealm:
+                frgTradesOverview.refreshDataFromRealm();
+                break;
+
             case R.id.mReadDataFromFtp:
                 Toast.makeText(this, "JK: Reload data requested", Toast.LENGTH_LONG).show();
                 break;
@@ -159,16 +161,19 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
     }
 
     @Override           // TODO nezdá se mi myměňování framů. Nejdou data prostě jen updatovat?
-    public void onSelectedItem(int p, String jsonItem) {
+    public void onSelectedItem(int p, String jsonItem, Long tradeId) {
         //Toast.makeText(this, "Položka " + p + "přijata v hlavní aktivitě", Toast.LENGTH_SHORT).show();
         if (twoFragments) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FrgTradeDetail frgTradeDetail = (FrgTradeDetail) fragmentManager.findFragmentById(R.id.frgContainerTradesDetail);
-            frgTradeDetail.displayTradeRecordJson(jsonItem);
+           // frgTradeDetail.displayTradeRecordJson(jsonItem);    původní zobrazování přes JSON
+            frgTradeDetail.displayTradeRecord(tradeId);
+
         } else {
             Intent intent = new Intent(this, actTradeDetail.class);
-            intent.putExtra(FrgTradeDetail.SELECTED_RECORD_JSON, jsonItem);
-            intent.putExtra(FrgTradeDetail.SELECTED_ITEM_POS, p);
+            intent.putExtra(FrgTradeDetail.SELECTED_RECORD_JSON, jsonItem);  //TODO prio 3 časem smazat
+            intent.putExtra(FrgTradeDetail.SELECTED_ITEM_POS, p);           // TODO prio 3 časem smazat
+            intent.putExtra(FrgTradeDetail.SELECTED_RECORD_TRADE_ID, tradeId);
             startActivity(intent);
         }
     }

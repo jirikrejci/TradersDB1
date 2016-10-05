@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.JKSoft.TdbClient.dataStructures.RelevantTradesExch;
 import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.Networking.gson.JsonConversions;
-import com.JKSoft.TdbClient.Convertors.Convertors;
+import com.JKSoft.TdbClient.Convertors.HttpConvertor;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
 import com.JKSoft.TdbClient.app.actFragmentedMain;
 import com.example.jirka.TdbClient.R;
@@ -49,8 +49,8 @@ public class MainActivity extends Activity {
     private Callback<Response> mHelloGetCallback = new Callback<Response>() {
         @Override
         public void success(Response result, Response response) {
-            tvDisplay.setText(Convertors.responseBodyToString(response));
-            Log.d(TAG, "Response body:" + Convertors.responseBodyToString(response));
+            tvDisplay.setText(HttpConvertor.responseBodyToString(response));
+            Log.d(TAG, "Response body:" + HttpConvertor.responseBodyToString(response));
         }
 
         @Override
@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
     private Callback<Response> mHelloPostCallback = new Callback<Response>() {
         @Override
         public void success(Response result, Response response) {
-            tvDisplay.setText(Convertors.responseBodyToString(response));
-            Log.d(TAG, "Response body:" + Convertors.responseBodyToString(response));
+            tvDisplay.setText(HttpConvertor.responseBodyToString(response));
+            Log.d(TAG, "Response body:" + HttpConvertor.responseBodyToString(response));
         }
 
         @Override
