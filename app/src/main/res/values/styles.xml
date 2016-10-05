@@ -6,10 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/Button</item>
 
     </style>
 
-    <style name="Button" parent="Base.TextAppearance.AppCompat.Button">
+    <style name="Button" parent="Widget.AppCompat.Button">
         <item name="textAllCaps">false</item>
     </style>
 
@@ -17,10 +18,15 @@
     <style name="TradeDetailItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearenceListItem</item>
+
+
+
+    </style>
+
+    <style name="TextAppearenceListItem">
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorTradeDetailTextColor</item>
-
-
     </style>
 
 </resources>

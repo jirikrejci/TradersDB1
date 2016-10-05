@@ -16,16 +16,7 @@
             <option value="$PROJECT_DIR$/tdbshared" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/backendServlets" />
-            <option value="$PROJECT_DIR$/networkingJK" />
-            <option value="$PROJECT_DIR$/tdbdesktop" />
-            <option value="$PROJECT_DIR$/tdbshared" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

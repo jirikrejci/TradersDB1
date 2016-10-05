@@ -100,7 +100,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         return view;
     }
 
-    private void clearTradesList() {
+    public void clearTradesList() {
         tradeRecordList.clear();
         tradesListAdapter.notifyDataSetChanged();
 
@@ -170,7 +170,7 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         clearTradesList();
         ArrayList<TradeRecord> newTradeRecords =TdbRealm.getAllTradesFromRealm();
         for (TradeRecord tradeRecord: newTradeRecords) {
-            tradeRecordList.add(tradeRecord);
+            tradeRecordList.add(tradeRecord);   // TODO AddALL
         }
         tradesListAdapter.notifyDataSetChanged();
     }

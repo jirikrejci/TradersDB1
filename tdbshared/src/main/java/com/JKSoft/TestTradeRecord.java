@@ -1,7 +1,6 @@
 package com.JKSoft;
 
 import com.JKSoft.DataExchange.TradeRecordsReader;
-import com.JKSoft.DataStructures.RelevantTradesExch;
 import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.Networking.gson.JsonConversions;
 

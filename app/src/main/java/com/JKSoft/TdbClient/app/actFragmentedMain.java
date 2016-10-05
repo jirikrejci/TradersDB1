@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.JKSoft.TdbClient.Model.TdbRealm;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
+import com.crashlytics.android.Crashlytics;
 import com.example.jirka.TdbClient.R;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
 public class actFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
@@ -123,7 +125,9 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
                 TdbRealm.deleteAllRealmData();
                 break;
             case R.id.mWipeDataFromMemory:
+                frgTradesOverview.clearTradesList();
                 Toast.makeText(this, "JK: Wipe data from memory", Toast.LENGTH_LONG).show();
+
                 break;
             case R.id.mRealmTests:
                 TdbRealm.realmTests(this);

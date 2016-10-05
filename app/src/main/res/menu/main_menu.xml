@@ -10,19 +10,19 @@
 
     <item android:id="@+id/mReloadDataFromRealm"
         android:icon="@drawable/ic_cached_white_24dp"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         app:showAsAction="always"
         android:title="Refresh data from realm" />
 
 
     <item android:id="@+id/mReadDataFromFtp"
         android:title="Read data from FTP"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         app:showAsAction="withText"
         />
         <item android:id="@+id/mWipeDataFromMemory"
             android:title="Wipe data from Memory"
-            android:orderInCategory="3"
+            android:orderInCategory="4"
             app:showAsAction="never"
             />
 

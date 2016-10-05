@@ -3,6 +3,7 @@ package com.JKSoft.TdbClient.dataStructures;
 import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Jirka on 25.8.2016.
@@ -10,7 +11,7 @@ import io.realm.RealmObject;
 public class TradeRecord extends RealmObject {
 
    // private memmbers
- //   @PrimaryKey
+    @PrimaryKey
     @SerializedName("ID")
     Long tradeId;
 
