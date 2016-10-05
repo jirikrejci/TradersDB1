@@ -149,11 +149,18 @@ public class TdbRealm {
     }
 
 
-
+    /**
+     * Intern? testy Realm
+     * a tohle jsou dalsi radky
+     * @param context kontext p?evzat? z aktivity
+     */
 
     public static void realmTests (Context context) {
         ArrayList<TradeRecord> tradeRecords = TdbDataSource.getActualTradeRecords(context);
         saveTradesToRealm_SyncClassic(tradeRecords);
+        /**
+         * tohle je intern? koment??
+         */
 
         ArrayList<TradeRecord> allTradesList = getAllTradesFromRealm(); Log.d(TAG, "allTradeList size = " + allTradesList.size());
         ArrayList<TradeRecord> pendingTradesList = getAllPendingTradesFromRealm(); Log.d(TAG, "pendingTradeList size = " + pendingTradesList.size());

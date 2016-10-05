@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.JKSoft.TdbClient.Model.TdbRealm;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
+import com.crashlytics.android.Crashlytics;
 import com.example.jirka.TdbClient.R;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
 public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
@@ -39,6 +41,7 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         Realm.init(this);  // iniciace Realm
 
         setContentView(R.layout.act_trades_overview_fragmented);

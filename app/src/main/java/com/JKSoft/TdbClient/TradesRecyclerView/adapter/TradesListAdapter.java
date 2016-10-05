@@ -57,7 +57,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      */
     public TradesListAdapter(List<TradeRecord> listData, Context c) {
         this.listData = listData;
-        this.inflater = LayoutInflater.from(c);  // layout inflater v kontexctu volající třídy
+        this.inflater = LayoutInflater.from(c);  // layout inflater v kontexctu volaj�c� t��dy
         this.context = c;
 
     }
@@ -85,9 +85,9 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      */
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // vytvorení view jedné položky z xml
+        // vytvoren� view jedn� polo�ky z xml
         View view = inflater.inflate(R.layout.lay_trades_overview_listitem, parent, false);
-        //ItemHolder obsahuje ukazatele na views v rámci tednoho ItemView
+        //ItemHolder obsahuje ukazatele na views v r�mci tednoho ItemView
         return new ItemHolder(view);
 
     }
@@ -116,9 +116,9 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
     public void onBindViewHolder(ItemHolder holder, int position) {
         TradeRecord tradeRecord = listData.get(position);
         holder.tvSymbol.setText(tradeRecord.getSymbol());
-        holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO předělat na String.format
+        holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO p�ed�lat na String.format
 
-        // zvýraznění vybrané položky
+        // zv�razn�n� vybran� polo�ky
 
         if (selectedPosition == position) {
             holder.viewItemContainer.setBackgroundColor(Color.rgb(200,200,210));  // TODO dostat sem bartvu z resources
@@ -210,13 +210,13 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
     }
 
     /**
-     * Vlastní Item holder - objekt, který drží odkazy na jednotlivá subview v rámci jedné položky
-     * a definuje onClickListener na úrovni Item view. OnClick listener dostává jako parametr konkrétní
-     * subview, na které bylo kliknuto
+     * Vlastn� Item holder - objekt, kter� dr�� odkazy na jednotliv� subview v r�mci jedn� polo�ky
+     * a definuje onClickListener na �rovni Item view. OnClick listener dost�v� jako parametr konkr�tn�
+     * subview, na kter� bylo kliknuto
      *
      */
 
-    class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {  //TODO zkusit předělat na ButterKnife
+    class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {  //TODO zkusit p�ed�lat na ButterKnife
         @BindView(R.id.tvSymbol) TextView tvSymbol;
         @BindView(R.id.tvLevelPrice) TextView tvLevelPrice;
         @BindView(R.id.imTradeDirectionIcon) ImageView imDirectionIcon;
@@ -227,35 +227,35 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         private View viewItemContainer;
 
         /**
-         * constructor - naplňuje handlery odkazy a nastavuje listener
-         * @param itemView item group view, které pod sebou drží jednotlivá zobrazovaná view v rámci řádku
+         * constructor - napl�uje handlery odkazy a nastavuje listener
+         * @param itemView item group view, kter� pod sebou dr�� jednotliv� zobrazovan� view v r�mci ��dku
          */
         public ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-            // následující položky převedeny pod Butterknife
+            // n�sleduj�c� polo�ky p�evedeny pod Butterknife
 
  //           tvLevelPrice = (TextView) itemView.findViewById(R.id.tvLevelPrice);
 //            imDirectionIcon = (ImageView) itemView.findViewById(R.id.imTradeDirectionIcon);
 //            tvDirection = (TextView) itemView.findViewById(R.id.tvDirection);
 
-            // násldující zůstává
+            // n�slduj�c� z�st�v�
             tvOrderStatus = (TextView) itemView.findViewById(R.id.tvOrderStatus);
             tvEstimatedTradeStatus = (TextView) itemView.findViewById(R.id.tvEstimatedTradeStatus);
             tvLevelDistance = (TextView) itemView.findViewById(R.id.tvLevelDistance);
 
 
-            // uložení odkazu na item group view pro nastavení listeneru
+            // ulo�en� odkazu na item group view pro nastaven� listeneru
             viewItemContainer = itemView.findViewById(R.id.viewItemRoot);
-            // nastavení listeneru na click - odkazuje na unstanci Item Holderu => každý holder má svůj listener, a listener je definován v rámci holderu
+            // nastaven� listeneru na click - odkazuje na unstanci Item Holderu => ka�d� holder m� sv�j listener, a listener je definov�n v r�mci holderu
             viewItemContainer.setOnClickListener(this);
         }
 
 
 
         /**
-         * Vlastní onCllick listener
+         * Vlastn� onCllick listener
          * Called when a view has been clicked.
          *
          * @param v The view that was clicked.
@@ -265,9 +265,9 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
             int adapterPosition = getAdapterPosition();
             int oldSelectedPosition = selectedPosition;
 
-            //TODO - kvuli notify musel byt nastaven RecyclerView.setItemAnimator(null), jinak to padalo. Spíš by se měl použít drawer. Ale animator by se měl nastavit taky
-            //TODO správně by asi měl být piužit dekorátor, ale i tak by bylo dobré anučit se používat animátor
-            // A taky by asi bylo dobré kolem tradu jen udělat obdélník - dají se nějak nastavit obrysy, nebo shape, nebo zviditelnit shape? (pak by to asi muselo být RelativeLayout
+            //TODO - kvuli notify musel byt nastaven RecyclerView.setItemAnimator(null), jinak to padalo. Sp� by se m�l pou��t drawer. Ale animator by se m�l nastavit taky
+            //TODO spr�vn� by asi m�l b�t piu�it dekor�tor, ale i tak by bylo dobr� anu�it se pou��vat anim�tor
+            // A taky by asi bylo dobr� kolem tradu jen ud�lat obd�ln�k - daj� se n�jak nastavit obrysy, nebo shape, nebo zviditelnit shape? (pak by to asi muselo b�t RelativeLayout
 
 
             selectedPosition = adapterPosition;
