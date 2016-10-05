@@ -16,13 +16,11 @@ import android.widget.Toast;
 import com.JKSoft.TdbClient.Model.TdbRealm;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
-import com.crashlytics.android.Crashlytics;
 import com.example.jirka.TdbClient.R;
 
-import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
-public class actFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
+public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
 
     RecyclerView recView;
     FrgTradesOverview frgTradesOverview;
@@ -48,7 +46,6 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         frgTradesOverview = new FrgTradesOverview();
         fragmentTransaction.replace(R.id.frgContainerTradesOverview, frgTradesOverview);
-        //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
         fragmentTransaction.commit();
 
         if (null == findViewById(R.id.frgContainerTradesDetail)) {
@@ -71,8 +68,11 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
 
-
+    }
 
     //TODO - projít Styles and themes guide  https://developer.android.com/guide/topics/ui/themes.html
 
@@ -174,7 +174,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
             frgTradeDetail.displayTradeRecord(tradeId);
 
         } else {
-            Intent intent = new Intent(this, actTradeDetail.class);
+            Intent intent = new Intent(this, ActTradeDetail.class);
             intent.putExtra(FrgTradeDetail.SELECTED_RECORD_JSON, jsonItem);  //TODO prio 3 časem smazat
             intent.putExtra(FrgTradeDetail.SELECTED_ITEM_POS, p);           // TODO prio 3 časem smazat
             intent.putExtra(FrgTradeDetail.SELECTED_RECORD_TRADE_ID, tradeId);
@@ -185,7 +185,7 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
 
     private void showSettingsFragment() {
-        Intent intent = new Intent(this, actPreferences.class );
+        Intent intent = new Intent(this, ActPreferences.class );
         startActivity(intent);
     }
 

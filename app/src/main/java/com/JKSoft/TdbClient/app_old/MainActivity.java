@@ -14,7 +14,7 @@ import com.JKSoft.Networking.fms.Ftp;
 import com.JKSoft.Networking.gson.JsonConversions;
 import com.JKSoft.TdbClient.Convertors.HttpConvertor;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
-import com.JKSoft.TdbClient.app.actFragmentedMain;
+import com.JKSoft.TdbClient.app.ActFragmentedMain;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -129,7 +129,7 @@ public class MainActivity extends Activity {
 
     public void btnShowTradesView(View view) {
 
-        Intent intent = new Intent(this, actFragmentedMain.class);
+        Intent intent = new Intent(this, ActFragmentedMain.class);
 
         Bundle bundle = new Bundle();
         // TODO - vymyslet, jak předat data jako parcelable

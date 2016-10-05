@@ -33,6 +33,7 @@ public class TdbRealm {
             TradeRecord tradeRecordStored = realm.copyToRealm(tradeRecord);
         }
         realm.commitTransaction();
+        realm.close();
     }
 
     public static void saveTradesToRealm_SyncTransactionBlock (final ArrayList<TradeRecord> tradeRecords) {
@@ -46,6 +47,7 @@ public class TdbRealm {
                 }
             }
         });
+        realm.close();
     }
 
     public static void staveTradesToRealm_Async (final ArrayList<TradeRecord> tradeRecords) {
@@ -75,6 +77,7 @@ public class TdbRealm {
 
 
         );
+        realm.close();
     }
 
 
@@ -90,7 +93,7 @@ public class TdbRealm {
             tradeRecords.add(realmResults.get(i));
         }
 
-
+        realm.close();
         return tradeRecords;
 
     }
@@ -105,10 +108,13 @@ public class TdbRealm {
 
         if (realmResults.size() == 0) {
             Log.e("TDB", "No trade with id " + tradeId + " in database");
+            realm.close();
             return null;
         } else {
 
+
             if (realmResults.size() > 1 ) Log.e("TDB", "Waring - more than one trade with  tradeId: " + tradeId);
+            realm.close();
             return (TradeRecord) realmResults.get(0);
         }
     }
@@ -126,7 +132,7 @@ public class TdbRealm {
             tradeRecords.add(realmResults.get(i));
         }
 
-
+        realm.close();
         return tradeRecords;
 
     }
@@ -139,6 +145,7 @@ public class TdbRealm {
                 realm.deleteAll();
             }
         });
+        realm.close();
     }
 
 

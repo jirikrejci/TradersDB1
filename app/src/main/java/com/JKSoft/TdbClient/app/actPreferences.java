@@ -17,7 +17,7 @@ import com.example.jirka.TdbClient.R;
 /**
  * Created by Jirka on 27.9.2016.
  */
-public class actPreferences extends PreferenceActivity
+public class ActPreferences extends PreferenceActivity
 {
 
     public static class FrgPreferences extends PreferenceFragment{

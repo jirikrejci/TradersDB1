@@ -16,7 +16,7 @@ import butterknife.BindView;
 /**
  * Created by Jirka on 3.10.2016.
  */
-public class actTradeDetail extends AppCompatActivity {
+public class ActTradeDetail extends AppCompatActivity {
 
     @BindView(R.id.tvSymbol)  TextView tvSymbol;
     /**

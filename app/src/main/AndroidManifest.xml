@@ -13,16 +13,16 @@
         android:name="com.JKSoft.TdbClient.app.MyApplication">
         <activity android:name="com.JKSoft.TdbClient.app_old.MainActivity">
         </activity>
-        <activity android:name="com.JKSoft.TdbClient.app.actFragmentedMain">
+        <activity android:name="com.JKSoft.TdbClient.app.ActFragmentedMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.JKSoft.TdbClient.app.actPreferences" />
-        <activity android:name="com.JKSoft.TdbClient.app.actTradeDetail"
-            android:parentActivityName="com.JKSoft.TdbClient.app.actFragmentedMain">
+        <activity android:name="com.JKSoft.TdbClient.app.ActPreferences" />
+        <activity android:name="com.JKSoft.TdbClient.app.ActTradeDetail"
+            android:parentActivityName="com.JKSoft.TdbClient.app.ActFragmentedMain">
         </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
