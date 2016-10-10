@@ -30,3 +30,5 @@
     </application>
 
 </manifest>
+    <!--android:theme="@style/AppTheme"-->
+    <!--android:theme="@style/Theme.AppCompat.Light.DarkActionBar"-->

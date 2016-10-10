@@ -77,7 +77,7 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
     }
 
-    //TODO - projít Styles and themes guide  https://developer.android.com/guide/topics/ui/themes.html
+    //TODO - projít Styles and themes guide  https://developer.android.com/guide/topics/ui/themes.html  s
 
 
 /*

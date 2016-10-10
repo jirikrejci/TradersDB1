@@ -149,9 +149,10 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
                 //tradeRecordList = newTradeRecordList;   // toto nefungovalo - adaptér s tím měl problémy
                 tradeRecordList.clear();
-                for (TradeRecord tradeRecord: newTradeRecordList) {
-                    tradeRecordList.add(tradeRecord);
-                }
+//                for (TradeRecord tradeRecord: newTradeRecordList) {
+//                    tradeRecordList.add(tradeRecord);
+//                }
+                tradeRecordList.addAll(newTradeRecordList);
                 tradesListAdapter.notifyDataSetChanged();
 
                 // ukládání do Realm
