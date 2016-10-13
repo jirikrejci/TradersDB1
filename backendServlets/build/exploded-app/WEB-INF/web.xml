@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>com.example.Jirka.myapplication.backend.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StringTransfer</servlet-name>
+        <servlet-class>com.example.Jirka.myapplication.backend.StringTransfer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StringTransfer</servlet-name>
+        <url-pattern>/stringTransfer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ActualTrades</servlet-name>
+        <servlet-class>com.example.Jirka.myapplication.backend.ActualTradesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualTrades</servlet-name>
+        <url-pattern>/actualTrades</url-pattern>
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>
