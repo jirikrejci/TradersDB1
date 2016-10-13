@@ -26,13 +26,10 @@ public class ActPreferences extends PreferenceActivity
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-
             addPreferencesFromResource(R.xml.preferences);  // Load the preferences from an XML resource
             SharedPreferences sharedPreferences = getPreferenceManager().getSharedPreferences();
 
-
             initSummary();
-
             listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
@@ -42,7 +39,6 @@ public class ActPreferences extends PreferenceActivity
                     updatePreferenceSummary(preference, key);
                 }
             };
-
             sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
         }
 
@@ -76,46 +72,14 @@ public class ActPreferences extends PreferenceActivity
         }
     }
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager
                 .beginTransaction()
                 .replace(android.R.id.content, new FrgPreferences())
                 .commit ();
-
     }
 }
-
-// Komentář k OnSharedPreferenceChanged
-//    /**
-//     * Called when a shared preference is changed, added, or removed. This
-//     * may be called even if a preference is set to its existing value.
-//     * <p>
-//     * <p>This callback will be run on your main thread.
-//     *
-//     * @param sharedPreferences The {@link SharedPreferences} that received
-//     *                          the change.
-//     * @param key               The key of the preference that was changed, added, or
-//     */
-
-//
-//    /**
-//     * Subclasses should override this method and verify that the given fragment is a valid type
-//     * to be attached to this activity. The default implementation returns <code>true</code> for
-//     * apps built for <code>android:targetSdkVersion</code> older than
-//     * {@link Build.VERSION_CODES#KITKAT}. For later versions, it will throw an exception.
-//     *
-//     * @param fragmentName the class name of the Fragment about to be attached to this activity.
-//     * @return true if the fragment class name is valid for this Activity and false otherwise.
-//     */
-
-//    @Override
-//    protected boolean isValidFragment(String fragmentName) {
-//        return FrgPreferences.class.getName().equals(fragmentName);
-//    }

@@ -19,7 +19,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:columnOrderPreserved="false"
-    android:columnCount="6"
+    android:columnCount="2"
 >
 
 
@@ -27,13 +27,15 @@
     <TextView
         android:layout_column="0"
         style="@style/TradeDetailItem"
-        android:text="Symbol:"/>
+        android:text="Symbol:"
+        android:layout_columnWeight="2"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSymbol"
         style="@style/TradeDetailItem"
-        android:text="xxxx"/>
+        android:text="xxxx"
+        android:layout_columnWeight="6"/>
 
     <TextView
         android:layout_column="0"
@@ -56,7 +58,7 @@
         android:layout_column="1"
         android:id="@+id/tvDirection"
         style="@style/TradeDetailItem"
-        android:paddingLeft="10dp"
+        android:paddingLeft="0dp"
         android:text="buy"/>
 
 
@@ -248,34 +250,7 @@
         android:layout_height="wrap_content"
         android:text="xxxx"/>
 
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
-
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
-    <TextView
-        android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
-
-    </GridLayout>
+</GridLayout>
 
 
 </ScrollView>

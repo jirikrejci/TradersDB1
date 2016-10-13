@@ -12,12 +12,12 @@
         android:positiveButtonText="OK"
         
         />
-
+<!--
     <CheckBoxPreference
         android:key="CHECK_BOX_PREF"
         android:title="Zaškrtni"
         />
-
+-->
     <PreferenceCategory
         android:title="Database connection"/>
 

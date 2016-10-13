@@ -19,24 +19,23 @@ import butterknife.BindView;
 public class ActTradeDetail extends AppCompatActivity {
 
     @BindView(R.id.tvSymbol)  TextView tvSymbol;
-    /**
-     * Perform initialization of all fragments and loaders.
-     *
-     * @param savedInstanceState
-     */
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_trade_detail);
 
+        // ActionBAr activation
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (null != actionBar) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Inserting fragment with detail
 
         FrgTradeDetail frgTradeDetail = new FrgTradeDetail();
-
         FragmentManager fragmentManager = getSupportFragmentManager();
-        frgTradeDetail.setArguments(getIntent().getExtras());  // TODO - pořešit přes newInstance
-
+        frgTradeDetail.setArguments(getIntent().getExtras());
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frgContainerTradesDetail, frgTradeDetail);

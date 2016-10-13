@@ -7,8 +7,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.JKSoft.Networking.fms.Ftp;
-import com.JKSoft.TdbClient.model.dataStructures.RelevantTradesExch;
-import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
+import com.JKSoft.TdbClient.model.structures.TradeRecord;
+import com.JKSoft.TdbClient.rest.adapters.TradersDbRestAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,12 +40,24 @@ public class TdbDataSource {
                 return Ftp.readStringFromFtp("/FilesDB/RelevantTrades.json"); // ftp source
             case "MOCK":
                 return readStringFromResources(R.raw.relevant_trades_mock, context);  // Mock data
-            case "TDB_SERVER":
-                return "error: TDB not implemented yet";
+            case "TDB_SERVER":                                                                  // TODO: přepsat tak, aby se vracel rovnou RelevantTradesExch pro všechny typy přístupů
+                TradersDbRestAdapter restAdapter = new TradersDbRestAdapter();
+                RelevantTradesExch relevantTradesExch =restAdapter.getActualTrades();
+                Gson gson = new GsonBuilder().create();
+                String json = gson.toJson(relevantTradesExch);
+
+                return json;
             default:
                 return "";
         }
     }
+
+    private static String readStringFromTdbServer() {
+        TradersDbRestAdapter tdbAdapter = new TradersDbRestAdapter();
+        //tdbAdapter.getActualTrades();
+        return "Error: under construction";
+    }
+
 
     private static String readStringFromResources (int resID, Context context) {
         Resources resources = context.getResources();
@@ -96,3 +109,4 @@ public class TdbDataSource {
 
 
 }
+

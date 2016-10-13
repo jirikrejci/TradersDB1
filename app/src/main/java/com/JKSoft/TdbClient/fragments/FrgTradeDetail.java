@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.JKSoft.TdbClient.convertors.TradeRecordConvertor;
 import com.JKSoft.TdbClient.model.TdbRealmDb;
-import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.model.structures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

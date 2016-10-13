@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.model.dataStructures;
+package com.JKSoft.TdbClient.model.structures;
 
 import com.google.gson.annotations.SerializedName;
 

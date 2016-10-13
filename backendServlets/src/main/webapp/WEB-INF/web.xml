@@ -18,7 +18,14 @@
         <url-pattern>/stringTransfer</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>ActualTrades</servlet-name>
+        <servlet-class>com.example.Jirka.myapplication.backend.ActualTradesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualTrades</servlet-name>
+        <url-pattern>/actualTrades</url-pattern>
+    </servlet-mapping>
 
 
     <welcome-file-list>

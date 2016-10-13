@@ -1,4 +1,6 @@
-package com.JKSoft.TdbClient.apiInterfaces;
+package com.JKSoft.TdbClient.rest.api;
+
+import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -23,5 +25,8 @@ public interface  TradersDbApi {
             @Field("name") String name,
             Callback<Response> callback
     );
+
+    @GET ("/actualTrades")
+    RelevantTradesExch getActualTrades ();
 
 }

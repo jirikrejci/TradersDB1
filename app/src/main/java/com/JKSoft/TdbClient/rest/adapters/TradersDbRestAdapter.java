@@ -1,6 +1,7 @@
-package com.JKSoft.TdbClient.restAdapters;
+package com.JKSoft.TdbClient.rest.adapters;
 
-import com.JKSoft.TdbClient.apiInterfaces.TradersDbApi;
+import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
+import com.JKSoft.TdbClient.rest.api.TradersDbApi;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -35,6 +36,11 @@ public class TradersDbRestAdapter implements TradersDbApi {
     @Override
     public void postHello(String name, Callback<Response> callback) {
         mTdbApi.postHello(name, callback);
+    }
+
+    @Override
+    public RelevantTradesExch getActualTrades() {
+        return mTdbApi.getActualTrades();
     }
 }
 

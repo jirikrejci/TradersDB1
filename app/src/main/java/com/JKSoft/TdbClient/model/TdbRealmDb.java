@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.model.structures.TradeRecord;
 
 import java.util.ArrayList;
 
