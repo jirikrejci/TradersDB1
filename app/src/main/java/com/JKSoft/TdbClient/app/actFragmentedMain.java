@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -18,7 +19,9 @@ import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
 import com.crashlytics.android.Crashlytics;
 import com.example.jirka.TdbClient.R;
+import com.jakewharton.scalpel.ScalpelFrameLayout;
 
+import butterknife.BindView;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
@@ -29,7 +32,29 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
     FrgTradeDetail frgTradeDetail;
     Boolean twoFragments;
 
-    //List<TradeRecord> tradeRecordList;
+    //    @InjectView(R.id.scalpel) ScalpelFrameLayout scalpelView;
+    @BindView(R.id.scalpel)
+    ScalpelFrameLayout scalpelView;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch (event.getAction()) {
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                Toast.makeText(this, "Volume key down", Toast.LENGTH_SHORT).show();
+                scalpelView.setLayerInteractionEnabled(!scalpelView.isLayerInteractionEnabled());
+                return true;
+
+            default:
+                return super.onKeyDown(keyCode, event);
+
+
+        }
+
+    }
+
+
+//List<TradeRecord> tradeRecordList;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

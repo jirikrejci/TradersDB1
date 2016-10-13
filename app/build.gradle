@@ -81,6 +81,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
     compile 'com.android.support:recyclerview-v7:24.2.0'
+    compile 'com.jakewharton.scalpel:scalpel:1.1.2'
     // bez následujícího nastavení kompatibilit padal Gradle build
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
