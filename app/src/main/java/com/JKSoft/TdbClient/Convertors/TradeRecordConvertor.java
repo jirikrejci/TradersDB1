@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.Convertors;
+package com.JKSoft.TdbClient.convertors;
 
 /**
  * Created by Jirka on 5.10.2016.

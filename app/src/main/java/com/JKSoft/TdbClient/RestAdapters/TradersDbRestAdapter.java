@@ -1,6 +1,6 @@
-package com.JKSoft.TdbClient.RestAdapters;
+package com.JKSoft.TdbClient.restAdapters;
 
-import com.JKSoft.TdbClient.ApiInterfaces.TradersDbApi;
+import com.JKSoft.TdbClient.apiInterfaces.TradersDbApi;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -17,7 +17,6 @@ public class TradersDbRestAdapter implements TradersDbApi {
 
     public TradersDbRestAdapter() {
 
-
         mRestAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(TDB_API_URL)
@@ -25,12 +24,9 @@ public class TradersDbRestAdapter implements TradersDbApi {
 
         mTdbApi = mRestAdapter.create(TradersDbApi.class);
 
-
     }
 
     @Override
-
-
 
     public void getHello(Callback<Response> callBack) {
         mTdbApi.getHello(callBack);

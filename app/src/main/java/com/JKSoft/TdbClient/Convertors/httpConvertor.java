@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.Convertors;
+package com.JKSoft.TdbClient.convertors;
 
 import retrofit.client.Response;
 import retrofit.mime.TypedByteArray;

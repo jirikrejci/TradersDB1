@@ -1,6 +1,5 @@
-package com.JKSoft.TdbClient.dataStructures;
+package com.JKSoft.TdbClient.model.dataStructures;
 
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

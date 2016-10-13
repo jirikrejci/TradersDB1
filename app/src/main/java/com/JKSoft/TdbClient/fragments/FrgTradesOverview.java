@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.JKSoft.TdbClient.Model.TdbRealm;
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
-import com.JKSoft.TdbClient.Model.TdbDataSource;
+import com.JKSoft.TdbClient.model.TdbRealmDb;
+import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.model.TdbDataSource;
 import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
@@ -91,11 +91,9 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
         tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
-
         // natavení listeneru pro click v seznamu
-
-       //reloadDataFromSource();  // Původní celý reload  // TODO prio 1 pravidelná aktualizace dat ze serveru
-        refreshDataFromRealm();   // nyuní jen natažení z cache   //TODO prio 1 - aktualizace dat z databáze
+       //reloadDataFromSource();  // Původně celý reload  // TODO prio 1 pravidelná aktualizace dat ze serveru
+        refreshDataFromRealm();   // nyuní jen natažení z cache (Realm)  //TODO prio 1 - aktualizace dat z databáze
 
         return view;
     }
@@ -107,31 +105,20 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     }
 
 
-    /**
-     * Called when a fragment is first attached to its context.
-     * {@link #onCreate(Bundle)} will be called after this.
-     *
-     * @param context
-     */
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         selectedItemListener = (SelectedItemListener) context;
     }
 
-
-   
-
     public void reloadDataFromSource() {
 
         clearTradesList();
         progressBar.setVisibility(View.VISIBLE  );
 
-
-        AsyncTask<String, Void, ArrayList<TradeRecord>> task = new AsyncTask<String, Void, ArrayList<TradeRecord>>() {
+        AsyncTask<Void, Void, ArrayList<TradeRecord>> task = new AsyncTask<Void, Void, ArrayList<TradeRecord>>() {
             @Override
-            protected ArrayList<TradeRecord> doInBackground(String... strings) {
+            protected ArrayList<TradeRecord> doInBackground(Void... params) {
                 return TdbDataSource.getActualTradeRecords(context);
             }
 
@@ -140,28 +127,23 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
                 super.onPostExecute(newTradeRecordList);
                 progressBar.setVisibility(View.GONE);
 
-                // oštření, pokud se data nepodařilo načíst
+                // ošetření, pokud se data nepodařilo načíst
                 if (newTradeRecordList == null) {
                     Log.d("JK", "Empty input actual trade list - skipping OnPostExecute");
                     Toast.makeText(getContext(), "Nepodařilo se načíst aktuální data", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                //tradeRecordList = newTradeRecordList;   // toto nefungovalo - adaptér s tím měl problémy
                 tradeRecordList.clear();
-//                for (TradeRecord tradeRecord: newTradeRecordList) {
-//                    tradeRecordList.add(tradeRecord);
-//                }
                 tradeRecordList.addAll(newTradeRecordList);
                 tradesListAdapter.notifyDataSetChanged();
 
                 // ukládání do Realm
-               TdbRealm.deleteAllRealmData();                   // TODO tohle ještě upravit dle čistého MVC - Updatovat databázi a z ní pak view
-               TdbRealm.saveTradesToRealm_SyncClassic(newTradeRecordList);
-
-            }
+                TdbRealmDb.deleteAllRealmData();                   // TODO tohle ještě upravit dle čistého MVC - Updatovat databázi a z ní pak view
+                TdbRealmDb.saveTradesToRealm_SyncClassic(newTradeRecordList);
+          }
         };
-        task.execute("Ahoj");
+        task.execute();
 
     }
 
@@ -169,10 +151,8 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     public void refreshDataFromRealm () {
 
         clearTradesList();
-        ArrayList<TradeRecord> newTradeRecords =TdbRealm.getAllTradesFromRealm();
-        for (TradeRecord tradeRecord: newTradeRecords) {
-            tradeRecordList.add(tradeRecord);   // TODO AddALL
-        }
+        ArrayList<TradeRecord> newTradeRecords = TdbRealmDb.getAllTradesFromRealm();
+        tradeRecordList.addAll(newTradeRecords);
         tradesListAdapter.notifyDataSetChanged();
     }
 

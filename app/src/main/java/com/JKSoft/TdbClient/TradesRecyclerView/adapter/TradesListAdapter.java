@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.JKSoft.TdbClient.Convertors.TradeRecordConvertor;
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.convertors.TradeRecordConvertor;
+import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 
 import java.util.List;
@@ -116,9 +116,9 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
     public void onBindViewHolder(ItemHolder holder, int position) {
         TradeRecord tradeRecord = listData.get(position);
         holder.tvSymbol.setText(tradeRecord.getSymbol());
-        holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO p�ed�lat na String.format
+        holder.tvLevelPrice.setText(tradeRecord.getLevelPrice().toString()); //TODO predelat na String.Format
 
-        // zv�razn�n� vybran� polo�ky
+        // zvyrazneni vybrane polozky
 
         if (selectedPosition == position) {
             holder.viewItemContainer.setBackgroundColor(Color.rgb(200,200,210));  // TODO dostat sem bartvu z resources

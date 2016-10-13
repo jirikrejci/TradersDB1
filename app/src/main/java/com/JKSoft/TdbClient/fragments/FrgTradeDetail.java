@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.JKSoft.TdbClient.Convertors.TradeRecordConvertor;
-import com.JKSoft.TdbClient.Model.TdbRealm;
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
+import com.JKSoft.TdbClient.convertors.TradeRecordConvertor;
+import com.JKSoft.TdbClient.model.TdbRealmDb;
+import com.JKSoft.TdbClient.model.dataStructures.TradeRecord;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -95,7 +95,7 @@ public class FrgTradeDetail extends Fragment {
             //Gson gson = new GsonBuilder().create();                                       //TODO smazat - staré volání přes JSON
             //TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
 
-            TradeRecord tradeRecord = TdbRealm.getTradeFromRealm(tradeID);
+            TradeRecord tradeRecord = TdbRealmDb.getTradeFromRealm(tradeID);
             Log.d(TAG, "onCreateView - displaying tradeId = " + tradeID);
             displayTradeRecord(tradeRecord);
 
@@ -132,7 +132,7 @@ public class FrgTradeDetail extends Fragment {
     public void displayTradeRecord (Long tradeId) {
 
 
-        TradeRecord tradeRecord = TdbRealm.getTradeFromRealm(tradeId);
+        TradeRecord tradeRecord = TdbRealmDb.getTradeFromRealm(tradeId);
         Log.d(TAG, "displayTradeRecord: displaying tradeId = " + tradeId);
         displayTradeRecord(tradeRecord);
 

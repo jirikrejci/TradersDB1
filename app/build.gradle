@@ -36,6 +36,13 @@ android {
         versionCode 2
         versionName "2.0"
     }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "12g"
+    }
+
+
     buildTypes {   // založit release, debug (zaplé logování, vypnuté analytics), beta (na crashlitics)
         release {   // release odpovídá složce main . Pokud bych vytvořil složku release, vezme main a pak rozdíly v releas
             // main je základ všeho

@@ -1,4 +1,4 @@
-package com.JKSoft.TdbClient.ApiInterfaces;
+package com.JKSoft.TdbClient.apiInterfaces;
 
 import retrofit.Callback;
 import retrofit.client.Response;
