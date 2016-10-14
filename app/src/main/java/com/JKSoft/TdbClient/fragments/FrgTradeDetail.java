@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.JKSoft.TdbClient.convertors.TradeRecordConvertor;
 import com.JKSoft.TdbClient.model.TdbRealmDb;
-import com.JKSoft.TdbClient.model.structures.TradeRecord;
+import com.JKSoft.TdbClient.model.data.TradeRecord;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,7 +29,6 @@ public class FrgTradeDetail extends Fragment {
 
 
     @BindView (R.id.tvSymbol) TextView tvSymbol;
-
     @BindView (R.id.tvLevelPrice) TextView tvLevelPrice;
     @BindView (R.id.tvDirection) TextView tvDirection;
     @BindView (R.id.tvTP) TextView tvTP;
@@ -48,11 +47,9 @@ public class FrgTradeDetail extends Fragment {
     @BindView (R.id.tvTradeRecordStatus) TextView tvTradeRecordStatus;
 
 
-    public static FrgTradeDetail newInstance (int p, String jsonStr, Long tradeID) {   // TODO - tohle je forma injection, zvážit, jestli časem nezprovozním
+    public static FrgTradeDetail newInstance (Long tradeID) {   // TODO - tohle je forma injection, zvážit, jestli časem nezprovozním
         FrgTradeDetail frgTradeDetail = new FrgTradeDetail();
         Bundle arguments = new Bundle();
-        arguments.putInt(SELECTED_ITEM_POS, p);
-        arguments.putString(SELECTED_RECORD_JSON, jsonStr);
         arguments.putLong(SELECTED_RECORD_TRADE_ID, tradeID);
         frgTradeDetail.setArguments(arguments);
         return frgTradeDetail;
@@ -86,20 +83,10 @@ public class FrgTradeDetail extends Fragment {
         Bundle arguments = getArguments();
 
         if (arguments != null) {
-
-            String jsonRecordStr = arguments.getString(SELECTED_RECORD_JSON);
-            int p = arguments.getInt(SELECTED_ITEM_POS);
             Long tradeID = arguments.getLong (SELECTED_RECORD_TRADE_ID);
-
-
-            //Gson gson = new GsonBuilder().create();                                       //TODO smazat - staré volání přes JSON
-            //TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
-
             TradeRecord tradeRecord = TdbRealmDb.getTradeFromRealm(tradeID);
             Log.d(TAG, "onCreateView - displaying tradeId = " + tradeID);
             displayTradeRecord(tradeRecord);
-
-
         }
         return view;
     }
@@ -121,28 +108,22 @@ public class FrgTradeDetail extends Fragment {
         Log.i("JK", "in onViewCreated");
     }
 
-    public void displayTradeRecordJson(String jsonRecordStr) {
-        Gson gson = new GsonBuilder().create();
-        TradeRecord tradeRecord = gson.fromJson(jsonRecordStr, TradeRecord.class);
-        displayTradeRecord(tradeRecord);
-
-    }
-
-
+    /**
+     * Displaying trade Record witg given tradeID
+     * @param tradeId
+     */
     public void displayTradeRecord (Long tradeId) {
-
-
         TradeRecord tradeRecord = TdbRealmDb.getTradeFromRealm(tradeId);
-        Log.d(TAG, "displayTradeRecord: displaying tradeId = " + tradeId);
-        displayTradeRecord(tradeRecord);
-
+        if (null != tradeRecord) {
+            Log.d(TAG, "displayTradeRecord: displaying tradeId = " + tradeId);
+            displayTradeRecord(tradeRecord);
+        } else {
+            Log.d (TAG, "Trade record with tradeID = " + tradeId + "not found in Realm dB");
+        }
     }
 
 
-
-
-
-    public void displayTradeRecord (TradeRecord tradeRecord) {    // TODO ?? zeptat se jestli statická třída nemá přístup k dynamickým proměnným třídy - vypadá to tak
+    private void displayTradeRecord (TradeRecord tradeRecord) {
 
         String strNumberFormat = "%1$.4f";
 
@@ -156,8 +137,7 @@ public class FrgTradeDetail extends Fragment {
         if (tradeRecord.getOrderNumber() != null)
             tvOrderNum.setText(tradeRecord.getOrderNumber().toString());
             else
-            tvOrderNum.setText("");             // TODO pořešit null i u ostatních, aby nezůstávaly viset hodnoty z jiných
-
+            tvOrderNum.setText("");
         if (tradeRecord.getTpProposed() != null)
             tvTpProposed.setText(String.format(strNumberFormat, tradeRecord.getTpProposed()));
         if (tradeRecord.getTpManual() != null)
@@ -176,10 +156,5 @@ public class FrgTradeDetail extends Fragment {
         if (tradeRecord.getMethod() != null) tvMethod.setText(tradeRecord.getMethod()); else tvMethod.setText("");
         if (tradeRecord.getTradeId() != null) tvTradeId.setText(String.format("%d",tradeRecord.getTradeId())); else tvTradeId.setText("");
         if (tradeRecord.getTradeRecordStatus() != null) tvTradeRecordStatus.setText(tradeRecord.getTradeRecordStatus()); else tvTradeRecordStatus.setText("");
-
-
-
     }
-
-
 }

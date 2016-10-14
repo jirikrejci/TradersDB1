@@ -1,6 +1,6 @@
-package com.JKSoft.TdbClient.rest.api;
+package com.JKSoft.TdbClient.network.api;
 
-import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
+import com.JKSoft.TdbClient.model.data.RelevantTradesExch;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -10,15 +10,16 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 
 /**
+ * TDB (Trader Database) web API definition
  * Created by Jirka on 19.8.2016.
  */
 public interface  TradersDbApi {
 
-    //  /hello GET
+    //  hello GET
     @GET ("/hello")
     void getHello (Callback<Response> callBack);
 
-    // /hello POST
+    // hello POST
     @FormUrlEncoded
     @POST("/hello")
     void postHello (
@@ -26,6 +27,7 @@ public interface  TradersDbApi {
             Callback<Response> callback
     );
 
+    // actualTrades GET
     @GET ("/actualTrades")
     RelevantTradesExch getActualTrades ();
 

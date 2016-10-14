@@ -14,23 +14,25 @@
         app:showAsAction="always"
         android:title="Refresh data from realm" />
 
-
+<!--
     <item android:id="@+id/mReadDataFromFtp"
         android:title="Read data from FTP"
         android:orderInCategory="3"
         app:showAsAction="withText"
         />
+-->
+
         <item android:id="@+id/mWipeDataFromMemory"
-            android:title="Wipe data from Memory"
+            android:title="Wipe data from list"
             android:orderInCategory="4"
             app:showAsAction="never"
             />
-
+<!--
         <item android:id="@+id/mRealmTests"
             android:title="Realm tests"
             app:showAsAction="never"
             />
-
+-->
         <item android:id="@+id/mWriteDataToRealm"
             android:title="Write data to Realm"
             android:orderInCategory="5"

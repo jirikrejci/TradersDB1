@@ -7,8 +7,8 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
-/**
- * Created by jirikrejci on 05.10.16.
+/** MyApplication
+ * Created by jirikrejci and David Liska on 05.10.16.
  */
 
 public class MyApplication extends Application {
@@ -24,5 +24,5 @@ public class MyApplication extends Application {
         db = Realm.getDefaultInstance();
     }
 
-
 }
+

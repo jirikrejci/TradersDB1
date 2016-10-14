@@ -15,9 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.JKSoft.TdbClient.model.TdbRealmDb;
-import com.JKSoft.TdbClient.model.structures.TradeRecord;
+import com.JKSoft.TdbClient.model.data.TradeRecord;
 import com.JKSoft.TdbClient.model.TdbDataSource;
-import com.JKSoft.TdbClient.TradesRecyclerView.adapter.TradesListAdapter;
+import com.JKSoft.TdbClient.ui.recyclerViews.TradesListAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,25 +33,18 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     RecyclerView recView;
     TradesListAdapter tradesListAdapter;
     List<TradeRecord> tradeRecordList;
-
     @BindView(R.id.pbDataLoadProgressBar)  ProgressBar progressBar;
-
     Context context;
-
     SelectedItemListener selectedItemListener;  // proměnná pro uložení implementovaného listeneru
 
-    // SelectedItemListener interface
+    /**
+     * Listener interface for communication from fragment towards main activity
+     */
     public interface SelectedItemListener
     {
-        public void onSelectedItem (int p, String itemJson, Long tradeId);   // TODO - po zprovoznění přes tradeID musí stačit jen TradeID
+        /** Selected Item*/
+        public void onSelectedItem (Long tradeId);   // TODO - po zprovoznění přes tradeID musí stačit jen TradeID
     }
-
-    // setter pro SelectedItemListener
-    public void setSelectedItemListener (SelectedItemListener selectedItemListener) {
-        this.selectedItemListener = selectedItemListener;
-    }
-
-
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -77,31 +70,30 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         View view = inflater.inflate(R.layout.lay_trades_overview, container, false);  // false je zde strašně, důležité, jinak to padá
         ButterKnife.bind(this, view);
 
-
-        tradeRecordList = new ArrayList<>();    // TODO předělat podle příkladu
-
+        tradeRecordList = new ArrayList<>();
         context = getContext();
 
-        // RecycleView
+        // RecycleView initialization
         recView = (RecyclerView) view.findViewById(R.id.rvTradesList);
         tradesListAdapter = new TradesListAdapter(tradeRecordList, context);
         recView.setLayoutManager(new LinearLayoutManager(context));
         recView.setItemAnimator(null);
         recView.setAdapter(tradesListAdapter);
-
         tradesListAdapter.setItemClickCallback(this);  // aby šlo zadat this, musí se implementovat interface
 
-        // natavení listeneru pro click v seznamu
-       //reloadDataFromSource();  // Původně celý reload  // TODO prio 1 pravidelná aktualizace dat ze serveru
+        // Data refresh
         refreshDataFromRealm();   // nyuní jen natažení z cache (Realm)  //TODO prio 1 - aktualizace dat z databáze
-
+        //reloadDataFromSource();  // Původně celý reload  // TODO prio 1 pravidelná aktualizace dat ze serveru
         return view;
     }
 
+    /**
+     *  Ceases TraderList from memory and Recycler view
+     *  data still remain
+     */
     public void clearTradesList() {
         tradeRecordList.clear();
         tradesListAdapter.notifyDataSetChanged();
-
     }
 
 
@@ -111,6 +103,11 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         selectedItemListener = (SelectedItemListener) context;
     }
 
+
+    /**
+     * Reloads TraderDb data from source (using async task)
+     */
+    //TODO: probrat s Davidem umístění kódy - zde mi to přijde nepřehledná, ale možná se to jinak udělat nedá
     public void reloadDataFromSource() {
 
         clearTradesList();
@@ -127,60 +124,46 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
                 super.onPostExecute(newTradeRecordList);
                 progressBar.setVisibility(View.GONE);
 
-                // ošetření, pokud se data nepodařilo načíst
+                // in case the loading data fails
                 if (newTradeRecordList == null) {
                     Log.d("JK", "Empty input actual trade list - skipping OnPostExecute");
                     Toast.makeText(getContext(), "Nepodařilo se načíst aktuální data", Toast.LENGTH_LONG).show();
-                    return;
                 }
 
-                tradeRecordList.clear();
-                tradeRecordList.addAll(newTradeRecordList);
-                tradesListAdapter.notifyDataSetChanged();
-
-                // ukládání do Realm
-                TdbRealmDb.deleteAllRealmData();                   // TODO tohle ještě upravit dle čistého MVC - Updatovat databázi a z ní pak view
+                // Saving data to Realm DB
+                TdbRealmDb.deleteAllRealmData();                   // TODO tohle ještě upravit dle čistého MVC - Updatovat databázi a z ní pak view, probrat s Davidem, jeslti je to tak lepší
                 TdbRealmDb.saveTradesToRealm_SyncClassic(newTradeRecordList);
+                refreshDataFromRealm(); // data refresh in memmry and on UI
           }
         };
         task.execute();
-
     }
 
+    /**
+     * Reads cached data from Realm DB and displays them in UI
+     */
 
     public void refreshDataFromRealm () {
 
-        clearTradesList();
         ArrayList<TradeRecord> newTradeRecords = TdbRealmDb.getAllTradesFromRealm();
+        tradeRecordList.clear();
         tradeRecordList.addAll(newTradeRecords);
         tradesListAdapter.notifyDataSetChanged();
     }
 
-
-
+    /**
+     * Receives RecyclerView position and ID of selected trade and calls registered listener
+     * @param p position of item within recycler view
+     * @param tradeID Trade Id form Trade Database
+     */
 
     @Override
     public void onItemClick(int p, Long tradeID) {
      //   Toast.makeText(context, "Vybrána položka " + p , Toast.LENGTH_SHORT).show();
-
-
-
-        TradeRecord tradeRecord = tradeRecordList.get(p);        //TODO očetřit aby se správně pracovalo jen s jedním zdrojem dat !!! Array nebo List tradeRecords je zde stejně null
-        Gson gson = new GsonBuilder().create();                     // TODO zeptat se kluku, jak co nejefektivněji předávat record do nové aktivity. Možná to ale také vtřeší framy
-        //String jsonRecordStr = gson.toJson(tradeRecord);  // TODO proi 1 vymyslet, aby mi gson fungoval pod Realmem
-        String jsonRecordStr = "dummy";
-
-
-
-
         if (selectedItemListener != null) {
-           selectedItemListener.onSelectedItem(p, jsonRecordStr, tradeID);
+           selectedItemListener.onSelectedItem(tradeID);
         }
-
     }
-
-
-
 }
 
 

@@ -24,7 +24,7 @@
 
     <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="FTP settings">
+        android:title="FTP settings (not implemented yet)">
         <EditTextPreference
             android:key="FTP_SERVER_ADDRESS"
             android:title="FTP IP/Host name"
@@ -41,8 +41,8 @@
 
     <EditTextPreference
         android:key="TDB_SERVER"
-        android:title="TDB Server"
-        android:dialogTitle="NAstavení TDB serveru"
+        android:title="TDB Server (not implemented yet)"
+        android:dialogTitle="Nastavení TDB serveru"
         android:dialogMessage="Zadej IP adresu nebo hostname TDB serveru"
         />
 

@@ -13,26 +13,23 @@ import com.example.jirka.TdbClient.R;
 
 import butterknife.BindView;
 
-/**
+/**Activity managing Trade Detail Fragment (invoked in portriat mode)
  * Created by Jirka on 3.10.2016.
  */
 public class ActTradeDetail extends AppCompatActivity {
-
-    @BindView(R.id.tvSymbol)  TextView tvSymbol;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_trade_detail);
 
-        // ActionBAr activation
+        // Set home button on action bar
         ActionBar actionBar = getSupportActionBar();
         if (null != actionBar) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         // Inserting fragment with detail
-
         FrgTradeDetail frgTradeDetail = new FrgTradeDetail();
         FragmentManager fragmentManager = getSupportFragmentManager();
         frgTradeDetail.setArguments(getIntent().getExtras());
@@ -40,6 +37,5 @@ public class ActTradeDetail extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frgContainerTradesDetail, frgTradeDetail);
         fragmentTransaction.commit();
-
     }
 }

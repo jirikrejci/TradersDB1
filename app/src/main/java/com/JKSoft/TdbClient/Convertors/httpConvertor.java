@@ -4,6 +4,7 @@ import retrofit.client.Response;
 import retrofit.mime.TypedByteArray;
 
 /**
+ * Class containing custom convertors used by various methods accross project
  * Created by Jirka on 19.8.2016.
  */
 public class HttpConvertor {

@@ -1,21 +1,25 @@
-package com.JKSoft.TdbClient.rest.adapters;
+package com.JKSoft.TdbClient.network.adapters;
 
-import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
-import com.JKSoft.TdbClient.rest.api.TradersDbApi;
+import com.JKSoft.TdbClient.model.data.RelevantTradesExch;
+import com.JKSoft.TdbClient.network.api.TradersDbApi;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.Response;
 
 /**
+ * TDB (Trader Database) web API implementation
  * Created by Jirka on 19.8.2016.
  */
 public class TradersDbRestAdapter implements TradersDbApi {
     protected final String TAG = "JK: " + getClass().getSimpleName();
-    protected RestAdapter mRestAdapter;
-    protected TradersDbApi mTdbApi;
-    static final String TDB_API_URL = "http://tradesdb-android-gcm.appspot.com";
+    private RestAdapter mRestAdapter;
+    private TradersDbApi mTdbApi;
+    private static final String TDB_API_URL = "http://tradesdb-android-gcm.appspot.com";
 
+    /**
+     * API adapter initialisation
+     */
     public TradersDbRestAdapter() {
 
         mRestAdapter = new RestAdapter.Builder()
@@ -24,20 +28,32 @@ public class TradersDbRestAdapter implements TradersDbApi {
                 .build();
 
         mTdbApi = mRestAdapter.create(TradersDbApi.class);
-
     }
 
-    @Override
+    /**
+     * Testing purposes only - contacts server and gets "Hello"
+     * @param callBack - callback called when done with parameter Response
+     */
 
+    @Override
     public void getHello(Callback<Response> callBack) {
         mTdbApi.getHello(callBack);
     }
+
+    /**
+     * Testing purposes only - contacts server, post name and returns "Hello name"
+     * @param callback - callback called when done with parameter Response
+     */
 
     @Override
     public void postHello(String name, Callback<Response> callback) {
         mTdbApi.postHello(name, callback);
     }
 
+    /**
+     * Gets RelevantTradesExch object from TDB server
+     * @return
+     */
     @Override
     public RelevantTradesExch getActualTrades() {
         return mTdbApi.getActualTrades();

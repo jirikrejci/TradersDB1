@@ -1,9 +1,16 @@
 package com.JKSoft.TdbClient.convertors;
 
-/**Convert trade
- * Created by Jirka on 5.10.2016.
+/** Convert tradeRecords values to readable strings used o UI layer
+ *  Created by Jirka on 5.10.2016.
  */
 public class TradeRecordConvertor {
+
+    /**
+     * Converting Trade status internal representation to readable string
+     * @param estimatedTradeStatus internal representation of trade status
+     * @return readable string representation of trade status
+     */
+
     public static String tradeStatus2Text(String estimatedTradeStatus) {
         switch (estimatedTradeStatus) {
             case "TS_PENDING": return "PENDING";

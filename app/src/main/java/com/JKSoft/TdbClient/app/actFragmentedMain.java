@@ -24,13 +24,20 @@ import com.jakewharton.scalpel.ScalpelFrameLayout;
 import butterknife.BindView;
 import io.fabric.sdk.android.Fabric;
 
+/**
+ * Main Activity managing application behaviour
+ * in Landscape mode activity holds two fragments - with overview and detail
+ * in Portrait mode activity holds fragment with overview and launches a new activity holding fragment with detail
+ * Created by Jirka on 3.10.2016.
+ */
+// TODO: zeptat se Davida, jesli logiks popsaná výše je správně, jeslti by se např. v portrait modu neměly vyměňovat fragmenty
+
 public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
 
-    RecyclerView recView;
     FrgTradesOverview frgTradesOverview;
     FrgTradeDetail frgTradeDetail;
-    Boolean twoFragmentsUsed;
-    //    @InjectView(R.id.scalpel) ScalpelFrameLayout scalpelView;
+    Boolean twoFragmentsUsed;   // true if two frgments mode is applied (landscape mode)
+    //  @InjectView(R.id.scalpel) ScalpelFrameLayout scalpelView;
 
     @BindView(R.id.scalpel)
     ScalpelFrameLayout scalpelView;
@@ -63,7 +70,6 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
         // inserting TradesOverviewFragment
         frgTradesOverview = new FrgTradesOverview();
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frgContainerTradesOverview, frgTradesOverview);
         fragmentTransaction.commit();
@@ -79,9 +85,8 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
     }
 
     private boolean getUseTwoFragments (){
-        return (null == findViewById(R.id.frgContainerTradesDetail))? false : true;
+        return (null != findViewById(R.id.frgContainerTradesDetail));
     }
-
 
     @Override
     protected void onStop() {
@@ -94,26 +99,24 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
 
         switch (item.getItemId()) {
             case R.id.mReloadDataFromServer:
-                frgTradesOverview.reloadDataFromSource();
+                frgTradesOverview.reloadDataFromSource();  // data reload from network source
                 break;
-            case R.id.mReloadDataFromRealm:
+            case R.id.mReloadDataFromRealm:         // data reload from internal realm DB
                 frgTradesOverview.refreshDataFromRealm();
                 break;
-
-            case R.id.mReadDataFromFtp:
-                Toast.makeText(this, "JK: Reload data requested", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.mDeleteDataFromRealm:
+            /*case R.id.mReadDataFromFtp:             // not implemented - force reload data from FTP
+                Toast.makeText(this, "JK: Reload data requested - not implemented yet", Toast.LENGTH_LONG).show();
+                break;*/
+            case R.id.mDeleteDataFromRealm:         // deleting data from internal realm DB
                 TdbRealmDb.deleteAllRealmData();
                 break;
-            case R.id.mWipeDataFromMemory:
+            case R.id.mWipeDataFromMemory:  // deleting data from list - data still stored in Realm DB
                 frgTradesOverview.clearTradesList();
-                Toast.makeText(this, "JK: Wipe data from memory", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(this, "Wipe data from memory DONE", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.mRealmTests:
-                TdbRealmDb.realmTests(this);
-                break;
+            /* case R.id.mRealmTests:          // not implemented
+                //TdbRealmDb.realmTests(this);
+                break;*/
             case R.id.mAbout:
                 aboutMenuItem();
                 break;
@@ -146,7 +149,7 @@ public class ActFragmentedMain extends AppCompatActivity implements FrgTradesOve
     }
 
     @Override
-    public void onSelectedItem(int p, String jsonItem, Long tradeId) {
+    public void onSelectedItem(Long tradeId) {
         //For debugging: Toast.makeText(this, "Položka " + p + "přijata v hlavní aktivitě", Toast.LENGTH_SHORT).show();
         if (twoFragmentsUsed) {
             FragmentManager fragmentManager = getSupportFragmentManager();

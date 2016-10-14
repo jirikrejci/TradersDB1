@@ -1,22 +1,26 @@
-package com.JKSoft.TdbClient.model.structures;
+package com.JKSoft.TdbClient.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 /**
+ * Structure for receiving data from TDB server
  * Created by Jirka on 28.8.2016.
  */
 public class RelevantTradesExch {
     @SerializedName("date created")
-    String date;
+    private String date;
 
     @SerializedName("protocol version")
-    String protocolVersion;
+    private String protocolVersion;
 
-    ArrayList<TradeRecord> trades;
+    private ArrayList<TradeRecord> trades;
 
-
+    /**
+     * Returns list of trades from RelevantReadesExch object
+     * @return
+     */
     public ArrayList <TradeRecord> getTrades () {
         return trades;
     }
@@ -29,7 +33,4 @@ public class RelevantTradesExch {
                 "\n trades=" + "TO BE IMPLEMENTED" + // Arrays.toString(trades) +
                 '}';
     }
-
-
-
 }

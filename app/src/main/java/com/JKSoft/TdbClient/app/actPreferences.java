@@ -14,7 +14,7 @@ import android.util.Log;
 
 import com.example.jirka.TdbClient.R;
 
-/**
+/** Application preferences class
  * Created by Jirka on 27.9.2016.
  */
 public class ActPreferences extends PreferenceActivity
@@ -33,8 +33,7 @@ public class ActPreferences extends PreferenceActivity
             listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                    Log.e("JK", "Shared preferences inside fragment");
-
+                    Log.d("JK", "Shared preferences inside fragment");
                     Preference preference = getPreferenceManager().findPreference(key);
                     updatePreferenceSummary(preference, key);
                 }
@@ -42,7 +41,7 @@ public class ActPreferences extends PreferenceActivity
             sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
         }
 
-        public void initSummary () {
+        private void initSummary () {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
 
             for ( int i = 0; i <preferenceScreen.getPreferenceCount(); i++) {
@@ -64,7 +63,6 @@ public class ActPreferences extends PreferenceActivity
 
             if (preference instanceof ListPreference) {
                 preference.setSummary(((ListPreference) preference).getEntry());
-
             }
             if (preference instanceof EditTextPreference) {
                 preference.setSummary(((EditTextPreference) preference).getText());
