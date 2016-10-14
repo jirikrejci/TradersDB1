@@ -8,9 +8,9 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 
-import com.JKSoft.TdbClient.model.structures.RelevantTradesExch;
-import com.JKSoft.TdbClient.model.structures.TradeRecord;
-import com.JKSoft.TdbClient.rest.adapters.TradersDbRestAdapter;
+import com.JKSoft.TdbClient.model.data  .RelevantTradesExch;
+import com.JKSoft.TdbClient.model.data.TradeRecord;
+import com.JKSoft.TdbClient.network.adapters.TradersDbRestAdapter;
 import com.example.jirka.TdbClient.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
