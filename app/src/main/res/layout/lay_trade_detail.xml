@@ -19,28 +19,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:columnOrderPreserved="false"
-    android:columnCount="2"
+    android:columnCount="3"
+    android:orientation="horizontal"
 >
-
-
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="Symbol:"
-        android:layout_columnWeight="2"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_symbol"
+        />
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSymbol"
         style="@style/TradeDetailItem"
-        android:text="xxxx"
-        android:layout_columnWeight="6"/>
+        android:text="xxxxx"
+        />
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="Level:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_level"/>
 
 
     <TextView
@@ -51,21 +50,21 @@
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="Direction:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_direction"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvDirection"
         style="@style/TradeDetailItem"
-        android:paddingLeft="0dp"
+
         android:text="buy"/>
 
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="Level dist:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_level_dist"/>
 
 
     <TextView
@@ -78,24 +77,20 @@
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="ETS:"/>
-
-
-
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_ets"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvEstimatedTradeStatus"
         style="@style/TradeDetailItem"
         android:text="TS_xxxx"
-        android:paddingStart="0dp"/>
-
+        />
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="Target:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_target"/>
 
     <TextView
         android:layout_column="1"
@@ -105,8 +100,8 @@
 
     <TextView
         android:layout_column="0"
-        style="@style/TradeDetailItem"
-        android:text="TP prop."/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_tp_prop"/>
 
     <TextView
         android:layout_column="1"
@@ -116,138 +111,118 @@
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TP man."/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_tp_man"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvTpManual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SL:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_sl"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SL pips:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_sl_pips"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSlPips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SL money:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_sl_money"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvSlMoney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RRR plan.:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_rrr_plan"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvRrrPlanned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="x.xxxx"/>
 
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order Status:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_order_status"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvOrderStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order #:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_order"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvOrderNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Method:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_method"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvMethod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Trade ID:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_trade_id"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvTradeId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
     <TextView
         android:layout_column="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record status:"/>
+        style="@style/TradeDetailLabel"
+        android:text="@string/label_record_status"/>
 
     <TextView
         android:layout_column="1"
         android:id="@+id/tvTradeRecordStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TradeDetailItem"
         android:text="xxxx"/>
 
 </GridLayout>

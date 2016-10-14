@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/frgContainerTradesDetail"
     tools:context="com.JKSoft.TdbClient.app.ActTradeDetail"
-    android:padding="10dp">
+   >
 
     <TextView
         android:layout_width="wrap_content"

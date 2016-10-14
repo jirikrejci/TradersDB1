@@ -18,15 +18,22 @@
     <style name="TradeDetailItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearenceListItem</item>1
-
-
-
+        <item name="android:layout_marginLeft">10sp</item>
+        <item name="android:textAppearance">@style/TextAppearenceListItem</item>
     </style>
+
+    <style name="TradeDetailLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearenceListItem</item>
+        <item name="android:textColor">@color/colorTradeDetailLabelColor</item>
+    </style>
+
+
 
     <style name="TextAppearenceListItem">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/colorTradeDetailTextColor</item>
+<!--        <item name="android:textColor">@color/colorTradeDetailTextColor</item> -->
     </style>
 
 </resources>

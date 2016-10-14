@@ -1,7 +1,25 @@
 <resources>
     <string name="btn_hello_get">Hello GET</string>
     <string name="btn_hello_post">Hello POST</string>
-
+    <string name="txt_xxxx">xxxx</string>
+    <string name="txt_x.xxxx">x.xxxx</string>
+    <string name="label_symbol">Symbol:</string>
+    <string name="label_level">Level:</string>
+    <string name="label_direction">Direction:</string>
+    <string name="label_level_dist">Level dist:</string>
+    <string name="label_ets">ETS:</string>
+    <string name="label_target">Target:</string>
+    <string name="label_tp_prop">TP prop.</string>
+    <string name="label_tp_man">TP man.</string>
+    <string name="label_sl">SL:</string>
+    <string name="label_sl_pips">SL pips:</string>
+    <string name="label_sl_money">SL money:</string>
+    <string name="label_rrr_plan">RRR plan.:</string>
+    <string name="label_order_status">Order Status:</string>
+    <string name="label_order">Order #:</string>
+    <string name="label_method">Method:</string>
+    <string name="label_trade_id">Trade ID:</string>
+    <string name="label_record_status">Record status:</string>
 
 
 </resources>
