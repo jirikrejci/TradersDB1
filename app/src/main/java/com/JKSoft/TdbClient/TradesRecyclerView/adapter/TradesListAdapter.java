@@ -159,7 +159,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
         holder.tvEstimatedTradeStatus.setText (TradeRecordConvertor.tradeStatus2Text(tradeRecord.getEstimatedTradeStatus())); //TODO doimplementovat EstimatedTradeStatus
 
         if (tradeRecord.getEstimatedTradeStatus() != null) {
-            int color = Color.rgb(0, 0, 0);
+            int color = Color.rgb(0, 0, 0); //TODO D export to resources or use system colors (f.e Color.Black)
             switch (tradeRecord.getEstimatedTradeStatus()) {
                 case "TS_PENDING":
                     color = ContextCompat.getColor(context, R.color.colorTradePending);
@@ -193,6 +193,19 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
 
         }
 
+//        TODO D
+//        pallete.xml
+//        <?xml version="1.0" encoding="utf-8"?>
+//        <resources>
+//        <color name="yellow">#FED900</color>
+//        <color name="yellow_dark">#FBC02D</color>
+//        <color name="green">#37A446</color>
+//        <color name="grey">#C9D0D4</color>
+//
+//
+//        colors.xml
+//        <color name="colorTradeIn">@color/yellow_dark</color>
+//        </resources>
 
     }
 
@@ -217,6 +230,7 @@ public class TradesListAdapter extends RecyclerView.Adapter<TradesListAdapter.It
      */
 
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {  //TODO zkusit předělat na ButterKnife
+        //TODO D private?
         @BindView(R.id.tvSymbol) TextView tvSymbol;
         @BindView(R.id.tvLevelPrice) TextView tvLevelPrice;
         @BindView(R.id.imTradeDirectionIcon) ImageView imDirectionIcon;

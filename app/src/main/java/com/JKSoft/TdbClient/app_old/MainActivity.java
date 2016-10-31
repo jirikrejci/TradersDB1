@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.JKSoft.TdbClient.dataStructures.RelevantTradesExch;
 import com.JKSoft.Networking.fms.Ftp;
-import com.JKSoft.Networking.gson.JsonConversions;
+import com.JKSoft.Networking.Gson.JsonConversions;
 import com.JKSoft.TdbClient.Convertors.HttpConvertor;
 import com.JKSoft.TdbClient.RestAdapters.TradersDbRestAdapter;
 import com.JKSoft.TdbClient.app.actFragmentedMain;

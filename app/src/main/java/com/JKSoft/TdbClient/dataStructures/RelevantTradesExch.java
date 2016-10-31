@@ -1,6 +1,5 @@
 package com.JKSoft.TdbClient.dataStructures;
 
-import com.JKSoft.TdbClient.dataStructures.TradeRecord;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
  * Created by Jirka on 28.8.2016.
  */
 public class RelevantTradesExch {
+    //TODO D private fields
     @SerializedName("date created")
     String date;
 

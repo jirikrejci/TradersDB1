@@ -17,10 +17,12 @@ import com.example.jirka.TdbClient.R;
 /**
  * Created by Jirka on 27.9.2016.
  */
-public class actPreferences extends PreferenceActivity
-{
+//TODO extend from AppCompatPreferenceActivity http://stackoverflow.com/questions/17849193/how-to-add-action-bar-from-support-library-into-preferenceactivity
+public class actPreferences extends PreferenceActivity {
 
+    //TODO D refactor (move to separate class: F6)
     public static class FrgPreferences extends PreferenceFragment{
+        //TODO D: private fields
         SharedPreferences.OnSharedPreferenceChangeListener listener;
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,7 @@ public class actPreferences extends PreferenceActivity
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //TODO add fragment only if savedInstanceState is null
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager
                 .beginTransaction()

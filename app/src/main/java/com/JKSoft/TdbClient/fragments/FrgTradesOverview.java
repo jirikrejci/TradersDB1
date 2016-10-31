@@ -75,14 +75,15 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.lay_trades_overview, container, false);  // false je zde strašně, důležité, jinak to padá
+        //TODO D move to onViewCreated method
         ButterKnife.bind(this, view);
-
 
         tradeRecordList = new ArrayList<>();    // TODO předělat podle příkladu
 
         context = getContext();
 
         // RecycleView
+        //TODO D convert to ButterKnife
         recView = (RecyclerView) view.findViewById(R.id.rvTradesList);
         tradesListAdapter = new TradesListAdapter(tradeRecordList, context);
         recView.setLayoutManager(new LinearLayoutManager(context));
@@ -128,10 +129,16 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
         clearTradesList();
         progressBar.setVisibility(View.VISIBLE  );
 
-
+        //TODO D loading outside fragment
         AsyncTask<String, Void, ArrayList<TradeRecord>> task = new AsyncTask<String, Void, ArrayList<TradeRecord>>() {
             @Override
             protected ArrayList<TradeRecord> doInBackground(String... strings) {
+                //TODO D check orientation change
+//                try {
+//                    Thread.sleep(5000L);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 return TdbDataSource.getActualTradeRecords(context);
             }
 
@@ -149,6 +156,8 @@ public class FrgTradesOverview extends Fragment implements TradesListAdapter.Ite
 
                 //tradeRecordList = newTradeRecordList;   // toto nefungovalo - adaptér s tím měl problémy
                 tradeRecordList.clear();
+
+//            TODO D    tradeRecordList.addAll(newTradeRecordList);
                 for (TradeRecord tradeRecord: newTradeRecordList) {
                     tradeRecordList.add(tradeRecord);
                 }

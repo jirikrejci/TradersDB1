@@ -16,16 +16,15 @@ import android.widget.Toast;
 import com.JKSoft.TdbClient.Model.TdbRealm;
 import com.JKSoft.TdbClient.fragments.FrgTradeDetail;
 import com.JKSoft.TdbClient.fragments.FrgTradesOverview;
-import com.crashlytics.android.Crashlytics;
 import com.example.jirka.TdbClient.R;
 
-import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
 public class actFragmentedMain extends AppCompatActivity implements FrgTradesOverview.SelectedItemListener {
 
+    //TODO D: private fields
     RecyclerView recView;
-    FrgTradesOverview frgTradesOverview;
+    FrgTradesOverview frgTradesOverview; //TODO check if is good to have reference to fragments
     FrgTradeDetail frgTradeDetail;
     Boolean twoFragments;
 
@@ -44,12 +43,14 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         Realm.init(this);  // iniciace Realm
 
         setContentView(R.layout.act_trades_overview_fragmented);
+
+        //TODO add fragment only if savedInstanceState is null
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         frgTradesOverview = new FrgTradesOverview();
         fragmentTransaction.replace(R.id.frgContainerTradesOverview, frgTradesOverview);
         //fragmentTransaction.add(R.id.frgContainerTradesOverview, frgTradesOverview);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit(); //TODO D check if it's ok to separate two commits
 
         if (null == findViewById(R.id.frgContainerTradesDetail)) {
             twoFragments = false;
@@ -182,13 +183,10 @@ public class actFragmentedMain extends AppCompatActivity implements FrgTradesOve
         }
     }
 
-
-
     private void showSettingsFragment() {
         Intent intent = new Intent(this, actPreferences.class );
         startActivity(intent);
     }
-
 
 }
 

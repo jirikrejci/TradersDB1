@@ -87,7 +87,7 @@ dependencies {
     // butterknife support
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile project(':networkingJK')
+    compile project(':networkingjk')
     compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }

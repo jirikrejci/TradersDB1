@@ -6,7 +6,7 @@ dependencies {
     targetCompatibility = 1.7
     compile 'com.google.code.gson:gson:2.4'
     compile 'commons-net:commons-net:3.3'
-    compile project(':networkingJK')
+    compile project(':networkingjk')
     compile project(':app')
     testCompile project(':app')
 

@@ -146,6 +146,8 @@ public class FrgTradeDetail extends Fragment {
 
         String strNumberFormat = "%1$.4f";
 
+        //TODO D add static helper methods (fe. FormattingUtils.java) for formatting money, dates, etc...
+
         tvSymbol.setText(tradeRecord.getSymbol());
         tvLevelPrice.setText(String.format(strNumberFormat, tradeRecord.getLevelPrice())); // TODO prio 2 - dořešit LOCALE ve String.format
         tvDirection.setText(tradeRecord.getDirection());
